@@ -9,6 +9,27 @@
   margin-top: 18px;
 }
 
+.h2 {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  line-height: 1.15;
+  font-weight: 650;
+  color: var(--cm-text-primary);
+  margin-top: 12px;
+  max-width: min(var(--cm-prose-max), 100%);
+}
+
+.em {
+  font-style: italic;
+  color: var(--cm-accent);
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
 .sectionLead {
   font-size: var(--cm-text-body);
   line-height: var(--cm-leading-relaxed);

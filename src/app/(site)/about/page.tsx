@@ -1,72 +1,50 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import {
-  AboutHero,
-  AboutTeam,
-  AboutCredentials,
-  AboutFAQ,
-  AboutCTA,
-} from "@/components/sections/AboutLanding";
-import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
-import { companyLinkedIn } from "@/lib/company-profile";
+import { Eyebrow } from "@/components/ui/Eyebrow";
+import { Button } from "@/components/ui/Button";
 import { pageMetadataForRoute } from "@/lib/page-copy-merge";
 import { getPageCopy } from "@/sanity/lib/pageCopy";
-import { getSiteSettings, getTeamMembersFromCms } from "@/sanity/lib/site";
-import { getFaqByPlacement } from "@/sanity/lib/faq";
-import { Marquee } from "@/components/sections/Marquee";
-import { marqueeItemsFromPageCopy } from "@/lib/page-marquee";
+import { getSiteSettings } from "@/sanity/lib/site";
 import aboutLocalStyles from "./about-local.module.css";
 
 export async function generateMetadata(): Promise<Metadata> {
   return pageMetadataForRoute(
     "about",
     {
-      title: "About MyNella — SEBI PMS & Research Analyst in Pune",
-      description: `${companyLinkedIn.tagline} ${companyLinkedIn.headquarters} · SEBI registrations, team, and systematic mandates.`,
+      title: "About MyNella",
+      description: "How MyNella thinks about beauty content, collaborators, and the stack behind the site.",
     },
     "/about",
   );
 }
 
 export default async function AboutPage() {
-  const [settings, cmsTeam, faqItems, aboutCopy] = await Promise.all([
-    getSiteSettings(),
-    getTeamMembersFromCms(),
-    getFaqByPlacement("about"),
-    getPageCopy("about"),
-  ]);
-  const marqueeItems = marqueeItemsFromPageCopy(aboutCopy, "about");
+  const [settings, aboutCopy] = await Promise.all([getSiteSettings(), getPageCopy("about")]);
+
+  const title1 = settings?.aboutTitleLine1?.trim() || "Built for creators";
+  const titleEm = settings?.aboutTitleEmphasis?.trim() || "and curious readers.";
+  const sub = settings?.aboutSub?.trim() || aboutCopy?.heroSubtitle?.trim() || "";
 
   return (
     <>
-      <FaqJsonLd items={faqItems} />
-      <AboutHero settings={settings} />
-      <Marquee items={marqueeItems} />
       <SectionWrapper>
-        <Eyebrow>Pune</Eyebrow>
-        <h2 className={aboutLocalStyles.h2}>Evaluating wealth management firms in Pune?</h2>
+        <Eyebrow>{aboutCopy?.contentEyebrow?.trim() || "About"}</Eyebrow>
+        <h1 className={aboutLocalStyles.h1}>
+          {title1} <em>{titleEm}</em>
+        </h1>
+        {sub ? <p className={aboutLocalStyles.p}>{sub}</p> : null}
         <p className={aboutLocalStyles.p}>
-          MyNella is based in Pune and regulated as a SEBI Portfolio Manager and Research Analyst — not a generic
-          directory listing. If you arrived from searches like{" "}
-          <strong>wealth management companies Pune</strong> or <strong>finance companies in Pune</strong>, read our
-          short guide on how to compare licences and products, then return here for team and registration detail.
+          MyNella is not a finance product. This repository keeps the essentials — Next.js for pages, Sanity for structured
+          content, Vercel for hosting, and Git for change control — so your team can focus on campaigns, launches, and
+          storytelling.
         </p>
-        <p className={aboutLocalStyles.p}>
-          <Link href="/wealth-management-pune" className={aboutLocalStyles.link}>
-            Wealth management in Pune — how to compare firms
-          </Link>
-          {" · "}
-          <Link href="/calculators/drawdown-recovery" className={aboutLocalStyles.link}>
-            Drawdown &amp; stock loss recovery calculator
-          </Link>
-        </p>
+        <div className={aboutLocalStyles.actions}>
+          <Button href="/contact">Work with us</Button>
+          <Button href="/" variant="ghost">
+            Back home
+          </Button>
+        </div>
       </SectionWrapper>
-      <AboutTeam settings={settings} cmsTeam={cmsTeam} />
-      <AboutCredentials />
-      <AboutFAQ items={faqItems} />
-      <AboutCTA />
     </>
   );
 }

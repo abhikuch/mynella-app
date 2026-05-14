@@ -2,15 +2,13 @@ import { Button } from "@/components/ui/Button";
 import { RevealOnView } from "@/components/ui/RevealOnView";
 import type { SiteSettingsDoc } from "@/sanity/lib/site";
 import type { ResolvedSiteChrome } from "@/lib/site-chrome-resolve";
-import { StrategyMatcher } from "@/components/sections/StrategyMatcher";
 import styles from "./Hero.module.css";
 
-const FALLBACK_TAG =
-  "SEBI Registered Portfolio Manager & Research Analyst";
-const FALLBACK_TITLE_1 = "From Capital to Compounding.";
-const FALLBACK_TITLE_EM = "A Systematic Wealth Creation Journey.";
+const FALLBACK_TAG = "Makeup · tutorials · drops";
+const FALLBACK_TITLE_1 = "Your look,";
+const FALLBACK_TITLE_EM = "your story.";
 const FALLBACK_SUB =
-  "MyNella is a system-driven investment firm combining 30+ years of real market experience with disciplined execution. We build investment strategies that suit investor goals — without emotional bias, narrative chasing, or reactive decision-making.";
+  "MyNella is a beauty-focused experience — curated looks, honest reviews, and editorial content. Explore the site or get in touch for partnerships and press.";
 
 export function Hero({
   settings,
@@ -49,7 +47,9 @@ export function Hero({
               <Button href={chrome.ctaLinks.bookCall} external>
                 {chrome.hero.primaryCtaLabel}
               </Button>
-              <StrategyMatcher config={chrome.strategyMatcher} />
+              <Button href="/contact" variant="ghost">
+                Contact us
+              </Button>
             </div>
           </RevealOnView>
           <RevealOnView className={styles.stats} delayMs={320} eager>

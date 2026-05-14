@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
     {
       title: "Contact MyNella",
       description:
-        "Reach MyNella — book a strategy call on Cal.com or email admin@mynella.com. SEBI-registered Portfolio Manager & Research Analyst, Pune.",
+        "Customer care, press, and partnerships for MyNella — the makeup and beauty editorial site.",
     },
     "/contact",
   );

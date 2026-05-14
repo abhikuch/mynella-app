@@ -7,34 +7,7 @@ const nextConfig: NextConfig = {
   },
   poweredByHeader: false,
   async redirects() {
-    return [
-      {
-        source: "/guides",
-        destination: "/blog/guides",
-        permanent: true,
-      },
-      {
-        source: "/guides/:slug",
-        destination: "/blog/:slug",
-        permanent: true,
-      },
-      {
-        source: "/compare",
-        destination: "/blog/compare",
-        permanent: true,
-      },
-      {
-        source: "/compare/:slug",
-        destination: "/blog/:slug",
-        permanent: true,
-      },
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "iamclearmind.com" }],
-        destination: "https://www.iamclearmind.com/:path*",
-        permanent: true,
-      },
-    ];
+    return [];
   },
   async headers() {
     return [

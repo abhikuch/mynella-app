@@ -10,10 +10,10 @@ import { NewsletterForm } from "@/components/leads/NewsletterForm";
 import styles from "./Footer.module.css";
 
 const DEFAULT_BRAND_DESC =
-  "A SEBI-regulated Portfolio Manager and Research Analyst delivering institutional-grade investment strategies to every investor in India.";
+  "MyNella celebrates modern makeup — editorial tutorials, honest product notes, and a calm place to explore beauty online.";
 
 const DEFAULT_DISCLAIMER_BODY =
-  "Investments in securities markets are subject to market risks. Read all related documents carefully before investing. SEBI registration does not guarantee performance or assure returns. Past performance is not indicative of future results. Please consult your financial advisor before investing.";
+  "Content on this site is for general information and inspiration. Patch-test products, read labels, and consult a professional for skin concerns. MyNella may earn commissions on some links where disclosed.";
 
 function mergeCompanyLinks(
   chrome: ResolvedSiteChrome,

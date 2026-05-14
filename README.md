@@ -1,3 +1,15 @@
+# MyNella — makeup & beauty marketing site
+
+
+
+**Scope:** Makeup/beauty marketing (not finance). Routes: `/`, `/about`, `/contact`, `/terms`, `/privacy`. Stack: Next.js, Sanity, SEO, Vercel, Git. Finance routes from the template were removed.
+
+
+
+---
+
+
+
 # MyNella
 
 Dedicated workspace for the **MyNella** marketing site launch (separate from Clearmind).

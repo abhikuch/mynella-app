@@ -26,7 +26,7 @@ function seedChromeBool(key: string, defaultVal: boolean): boolean {
 function seedProductNavLabels(): string[] {
   const v = chromeSeedRecord.footerProductNavLabels;
   if (Array.isArray(v) && v.length > 0) return v as string[];
-  return ["PMS", "Algo", "Model Portfolios"];
+  return ["About", "Contact"];
 }
 
 const defaultPartners = [...partnersSeedRows]
@@ -451,7 +451,7 @@ export function resolveSiteChrome(doc: SiteChromeDoc): ResolvedSiteChrome {
         doc?.headerLogo?.url?.trim() && doc?.headerLogo?.alt?.trim() ?
           { url: doc.headerLogo.url.trim(), alt: doc.headerLogo.alt.trim() }
         : null,
-      showInvestorLogin: resolveBool(doc?.headerShowInvestorLogin, seedChromeBool("headerShowInvestorLogin", true)),
+      showInvestorLogin: resolveBool(doc?.headerShowInvestorLogin, seedChromeBool("headerShowInvestorLogin", false)),
       showBookCall: resolveBool(doc?.headerShowBookCall, seedChromeBool("headerShowBookCall", true)),
       investorCtaLabel: (() => {
         const h = doc?.headerNavInvestorLabel?.trim();
@@ -465,7 +465,7 @@ export function resolveSiteChrome(doc: SiteChromeDoc): ResolvedSiteChrome {
       })(),
     },
     footerOptions: {
-      showProductsColumn: resolveBool(doc?.footerShowProductsColumn, seedChromeBool("footerShowProductsColumn", true)),
+      showProductsColumn: resolveBool(doc?.footerShowProductsColumn, seedChromeBool("footerShowProductsColumn", false)),
       productNavLabels:
         doc?.footerProductNavLabels?.length ?
           (doc.footerProductNavLabels.map((s) => s.trim()).filter(Boolean) as string[])
@@ -474,7 +474,7 @@ export function resolveSiteChrome(doc: SiteChromeDoc): ResolvedSiteChrome {
       showNewsletter: resolveBool(doc?.footerShowNewsletter, seedChromeBool("footerShowNewsletter", true)),
       showSocial: resolveBool(doc?.footerShowSocial, seedChromeBool("footerShowSocial", true)),
       showThemeToggle: resolveBool(doc?.footerShowThemeToggle, seedChromeBool("footerShowThemeToggle", true)),
-      showSebiBlock: resolveBool(doc?.footerShowSebiBlock, seedChromeBool("footerShowSebiBlock", true)),
+      showSebiBlock: resolveBool(doc?.footerShowSebiBlock, seedChromeBool("footerShowSebiBlock", false)),
     },
   };
 }
