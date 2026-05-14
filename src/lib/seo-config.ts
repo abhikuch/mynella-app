@@ -10,7 +10,7 @@ export const SITE_URL = (
 export const SITE_NAME = "MyNella";
 
 export const DEFAULT_DESCRIPTION =
-  "MyNella — marketing home for Nella, a calm companion for aesthetic routines and between-visit care. Editorial surface: SEO, Sanity, and Vercel.";
+  "Nella helps you remember visits, aftercare, and what comes next between aesthetic appointments — without group-chat noise. Join the waitlist on MyNella.";
 
 /** X (Twitter) handle for twitter:site (no @ in schema.org; with @ for Twitter cards). */
 export const TWITTER_HANDLE = "@mynella";

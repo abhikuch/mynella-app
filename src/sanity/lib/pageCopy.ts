@@ -34,7 +34,8 @@ export const pageCopyByRouteQuery = `*[_type == "pageCopy" && routeKey == $route
   heroPrimaryCtaLabel,
   heroSecondaryCtaLabel,
   heroSecondaryHref,
-  marqueeItems
+  marqueeItems,
+  landingFaq[]{ question, answer }
 }`;
 
 export type PageCopyDoc = {
@@ -68,6 +69,7 @@ export type PageCopyDoc = {
   heroSecondaryCtaLabel: string | null;
   heroSecondaryHref: string | null;
   marqueeItems?: string[] | null;
+  landingFaq?: { question: string | null; answer: string | null }[] | null;
 };
 
 export async function getPageCopy(

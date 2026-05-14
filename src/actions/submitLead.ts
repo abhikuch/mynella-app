@@ -3,7 +3,11 @@
 import { Resend } from "resend";
 import { buildFooterWelcomeEmail, buildLeadInternalNotification } from "@/lib/lead-welcome-email";
 import { getResendOutboundEnv } from "@/lib/resend-outbound";
-import { addLeadToResendList, isLeadAlreadyInResendList } from "@/lib/resend-leads-list";
+import {
+  addLeadToResendList,
+  isLeadAlreadyInResendList,
+  type LeadAcquisitionSource,
+} from "@/lib/resend-leads-list";
 import { normalizeIndiaMobile } from "@/lib/phone-india";
 import { SITE_URL } from "@/lib/seo-config";
 import { normalizeLeadEmail, validateNewsletterFormData } from "@/lib/form-validation";
@@ -11,13 +15,52 @@ import { getResolvedSiteChrome } from "@/sanity/lib/siteChrome";
 
 export type SubmitLeadResult = { ok: true } | { ok: false; error: string };
 
+const WAITLIST_SOURCES = ["footer", "landing-hero", "landing-bottom"] as const;
+type WaitlistFormSource = (typeof WAITLIST_SOURCES)[number];
+
+function parseWaitlistSource(raw: unknown): WaitlistFormSource | null {
+  const s = typeof raw === "string" ? raw.trim() : "";
+  return WAITLIST_SOURCES.includes(s as WaitlistFormSource) ? (s as WaitlistFormSource) : null;
+}
+
+function toResendLeadSource(source: WaitlistFormSource): LeadAcquisitionSource {
+  switch (source) {
+    case "footer":
+      return "footer";
+    case "landing-hero":
+      return "landing_hero";
+    case "landing-bottom":
+      return "landing_bottom";
+    default: {
+      const _exhaustive: never = source;
+      return _exhaustive;
+    }
+  }
+}
+
+function internalLabel(source: WaitlistFormSource): string {
+  switch (source) {
+    case "footer":
+      return "Newsletter (footer)";
+    case "landing-hero":
+      return "Waitlist (landing hero)";
+    case "landing-bottom":
+      return "Waitlist (landing bottom)";
+    default: {
+      const _e: never = source;
+      return _e;
+    }
+  }
+}
+
 export async function submitLead(formData: FormData): Promise<SubmitLeadResult> {
   const honeypot = String(formData.get("website") ?? "").trim();
   if (honeypot) {
     return { ok: true };
   }
 
-  if (formData.get("source") !== "footer") {
+  const source = parseWaitlistSource(formData.get("source"));
+  if (!source) {
     return { ok: false, error: "Invalid request." };
   }
 
@@ -38,7 +81,7 @@ export async function submitLead(formData: FormData): Promise<SubmitLeadResult> 
 
   if (outbound) {
     const resend = new Resend(outbound.apiKey);
-    const label = "Newsletter";
+    const label = internalLabel(source);
     const phoneDisplay = `+91 ${phoneDigits}`;
     const siteUrl = SITE_URL;
     const contactUrl = `${siteUrl}/contact`;
@@ -88,11 +131,11 @@ export async function submitLead(formData: FormData): Promise<SubmitLeadResult> 
 
     void addLeadToResendList(resend, {
       email,
-      leadSource: "footer",
+      leadSource: toResendLeadSource(source),
       phoneDisplay: phoneDisplay,
     });
   } else if (!isProd) {
-    console.info("submitLead (dev, no Resend):", { source: "footer", email, phoneDigits });
+    console.info("submitLead (dev, no Resend):", { source, email, phoneDigits });
   }
 
   return { ok: true };

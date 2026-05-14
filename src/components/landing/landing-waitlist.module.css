@@ -1,0 +1,163 @@
+/**
+ * Waitlist form on Nella landing — uses same palette tokens as nella-landing (duplicated
+ * for a self-contained client island without Clearmind token coupling).
+ */
+.wrap {
+  --w-ivory: #faf7f2;
+  --w-espresso: #2c1810;
+  --w-espresso-deep: #1f1410;
+  --w-gold: #8f6f3e;
+  --w-grey: #888780;
+  --w-line: rgba(44, 24, 16, 0.1);
+  --w-sage: #4a7e49;
+  --w-radius: 14px;
+  width: 100%;
+  max-width: 36rem;
+}
+
+.title {
+  font-family: var(--nl-font-display, ui-serif, Georgia, serif);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--nl-espresso, var(--w-espresso));
+  margin: 0 0 8px;
+}
+
+.intro {
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--nl-grey, var(--w-grey));
+  margin: 0 0 14px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 520px) {
+  .row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.label {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--nl-gold, var(--w-gold));
+}
+
+.input {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--nl-espresso, var(--w-espresso));
+  background: rgba(255, 252, 246, 0.95);
+  border: 1px solid var(--nl-line, var(--w-line));
+  border-radius: var(--w-radius);
+  padding: 11px 13px;
+  outline: none;
+  width: 100%;
+  min-width: 0;
+}
+
+.input:focus {
+  border-color: rgba(143, 111, 62, 0.45);
+  box-shadow: 0 0 0 3px rgba(143, 111, 62, 0.12);
+}
+
+.hint {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--nl-grey, var(--w-grey));
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--nl-grey, var(--w-grey));
+}
+
+.consent input {
+  margin-top: 3px;
+  flex-shrink: 0;
+  accent-color: var(--nl-sage, var(--w-sage));
+}
+
+.consent a {
+  color: var(--nl-gold, var(--w-gold));
+  font-weight: 600;
+}
+
+.submit {
+  align-self: flex-start;
+  padding: 12px 20px;
+  border-radius: var(--w-radius);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--nl-ivory, var(--w-ivory));
+  background: linear-gradient(
+    165deg,
+    var(--nl-espresso-mid, #3a2418) 0%,
+    var(--nl-espresso, var(--w-espresso)) 45%,
+    var(--nl-espresso-deep, var(--w-espresso-deep)) 100%
+  );
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.submit:hover:not(:disabled) {
+  opacity: 0.92;
+}
+
+.submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.error {
+  font-size: 0.8125rem;
+  color: var(--nl-rose, #8c5249);
+  margin: 0;
+}
+
+.success {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--nl-sage, var(--w-sage));
+  margin: 0;
+}
+
+.honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

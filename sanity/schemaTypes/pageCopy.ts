@@ -1,4 +1,4 @@
-import { defineField, defineType } from "sanity";
+import { defineArrayMember, defineField, defineType } from "sanity";
 
 const statFields = (n: 1 | 2 | 3 | 4) => [
   defineField({
@@ -44,7 +44,7 @@ export const pageCopy = defineType({
       name: "metaTitle",
       title: "SEO — title",
       type: "string",
-      description: "Shown in the browser tab; template adds “| Clearmind”.",
+      description: "Shown in the browser tab; template adds “| MyNella”.",
       group: "seo",
     }),
     defineField({
@@ -161,6 +161,35 @@ export const pageCopy = defineType({
       description:
         "Ticker lines under the hero. Leave empty to use built-in defaults for this route.",
       group: "marquee",
+    }),
+    defineField({
+      name: "landingFaq",
+      title: "Landing — FAQ (home only)",
+      type: "array",
+      group: "hero",
+      description:
+        "Optional Q&A shown on the Nella home landing (`routeKey` home). Leave empty to use built-in defaults in code.",
+      of: [
+        defineArrayMember({
+          type: "object",
+          name: "landingFaqItem",
+          fields: [
+            defineField({
+              name: "question",
+              title: "Question",
+              type: "string",
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: "answer",
+              title: "Answer",
+              type: "text",
+              rows: 4,
+              validation: (Rule) => Rule.required(),
+            }),
+          ],
+        }),
+      ],
     }),
   ],
   preview: {

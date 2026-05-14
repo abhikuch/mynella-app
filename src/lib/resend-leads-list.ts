@@ -55,7 +55,12 @@ export async function isLeadAlreadyInResendList(
 }
 
 /** Where the lead was captured — stored on the Resend contact for segmentation and reporting. */
-export type LeadAcquisitionSource = "footer" | "blog" | "contact";
+export type LeadAcquisitionSource =
+  | "footer"
+  | "blog"
+  | "contact"
+  | "landing_hero"
+  | "landing_bottom";
 
 function buildContactProperties(opts: {
   leadSource: LeadAcquisitionSource;

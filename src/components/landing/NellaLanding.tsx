@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { fraunces, dmSans } from "@/lib/fonts";
+import { LandingWaitlistForm } from "@/components/landing/LandingWaitlistForm";
+import { TrackedLink } from "@/components/landing/TrackedLink";
 import styles from "./nella-landing.module.css";
+
+export type LandingFaqItem = { question: string; answer: string };
 
 export interface NellaLandingCopy {
   eyebrow?: string;
@@ -16,12 +20,43 @@ const defaultCopy: Required<NellaLandingCopy> = {
   heroTitle: "Your treatments,",
   heroTitleAccent: "one calm thread.",
   heroLead:
-    "Nella helps you remember what you booked, what comes next, and how to care for your skin between visits — without the group-chat noise. The full app is in development; this page is an early glimpse of the world we are building.",
-  primaryCta: "Get updates",
-  secondaryCta: "About this site",
+    "Nella is the personal layer for aesthetic care: fewer tabs, fewer “did I already do that?” moments, and a gentle rhythm while the full app ships.",
+  primaryCta: "Join the waitlist",
+  secondaryCta: "About MyNella",
 };
 
-export function NellaLanding({ copy }: { copy?: NellaLandingCopy | null }) {
+const DEFAULT_FAQ: LandingFaqItem[] = [
+  {
+    question: "Is this medical advice?",
+    answer:
+      "No. Nella is a personal organization companion — not a clinician, not a diagnosis tool, and not a substitute for your provider’s instructions.",
+  },
+  {
+    question: "What data do you collect on this waitlist?",
+    answer:
+      "We store your email and India mobile number to contact you about launches and early access. See the Privacy Policy for retention and your rights.",
+  },
+  {
+    question: "When will the app be available?",
+    answer:
+      "We are in active development. Waitlist members hear first when private beta or public launch dates are set.",
+  },
+  {
+    question: "What is MyNella vs Nella?",
+    answer:
+      "MyNella is this marketing site and editorial home. Nella is the companion app we are building — developed on a separate track from these pages.",
+  },
+];
+
+export function NellaLanding({
+  copy,
+  pills,
+  faq,
+}: {
+  copy?: NellaLandingCopy | null;
+  pills: string[];
+  faq?: LandingFaqItem[] | null;
+}) {
   const c: Required<NellaLandingCopy> = {
     ...defaultCopy,
     ...(copy ?
@@ -33,6 +68,10 @@ export function NellaLanding({ copy }: { copy?: NellaLandingCopy | null }) {
     : {}),
   };
   const fontVars = `${fraunces.variable} ${dmSans.variable}`;
+  const faqItems =
+    faq && faq.length > 0 ? faq
+    : DEFAULT_FAQ;
+  const privacyHref = "/privacy";
 
   return (
     <div className={`${styles.root} ${fontVars}`}>
@@ -41,55 +80,116 @@ export function NellaLanding({ copy }: { copy?: NellaLandingCopy | null }) {
       </a>
 
       <header className={styles.topBar}>
-        <Link href="/" className={styles.brand}>
+        <TrackedLink href="/" className={styles.brand} eventName="cta_click" eventParams={{ target: "logo_home" }}>
           Nell<em>a</em>
-        </Link>
+        </TrackedLink>
         <nav className={styles.nav} aria-label="Marketing">
-          <Link className={styles.navLink} href="/about">
+          <TrackedLink
+            className={styles.navLink}
+            href="/about"
+            eventName="cta_click"
+            eventParams={{ target: "nav_about" }}
+          >
             About
-          </Link>
-          <Link className={styles.navLink} href="/contact">
+          </TrackedLink>
+          <TrackedLink
+            className={styles.navLink}
+            href="/contact"
+            eventName="cta_click"
+            eventParams={{ target: "nav_contact" }}
+          >
             Contact
-          </Link>
-          <Link className={styles.navLink} href="/contact">
-            {c.primaryCta}
-          </Link>
+          </TrackedLink>
+          <TrackedLink
+            className={`${styles.navLink} ${styles.navLinkEm}`}
+            href="#nl-waitlist"
+            eventName="cta_click"
+            eventParams={{ target: "nav_waitlist" }}
+          >
+            Waitlist
+          </TrackedLink>
         </nav>
       </header>
 
       <main id="nl-main">
         <section className={styles.hero} aria-labelledby="nl-hero-heading">
-          <div className={styles.heroInner}>
-            <p className={styles.eyebrow}>{c.eyebrow}</p>
-            <h1 id="nl-hero-heading" className={styles.heroTitle}>
-              {c.heroTitle}{" "}
-              <span className={styles.heroTitleAccent}>{c.heroTitleAccent}</span>
-            </h1>
-            <p className={styles.heroLead}>{c.heroLead}</p>
-            <div className={styles.pillRow} role="list">
-              <span className={styles.pill} role="listitem">
-                Visits &amp; reminders
-              </span>
-              <span className={styles.pill} role="listitem">
-                Aftercare nudges
-              </span>
-              <span className={`${styles.pill} ${styles.pillSage}`} role="listitem">
-                Private by default
-              </span>
+          <div className={styles.heroGrid}>
+            <div className={styles.heroCopy}>
+              <p className={styles.eyebrow}>{c.eyebrow}</p>
+              <p className={styles.brandClarify}>
+                <strong>MyNella</strong> is this site — updates, editorial, and the waitlist.{" "}
+                <strong>Nella</strong> is the app we&apos;re building.
+              </p>
+              <h1 id="nl-hero-heading" className={styles.heroTitle}>
+                {c.heroTitle}{" "}
+                <span className={styles.heroTitleAccent}>{c.heroTitleAccent}</span>
+              </h1>
+              <p className={styles.heroLead}>{c.heroLead}</p>
+              <div className={styles.pillRow} role="list">
+                {pills.map((label) => (
+                  <span key={label} className={styles.pill} role="listitem">
+                    {label}
+                  </span>
+                ))}
+              </div>
+              <div className={styles.ctaRow}>
+                <TrackedLink
+                  className={styles.ctaPrimary}
+                  href="#nl-waitlist"
+                  eventName="cta_click"
+                  eventParams={{ target: "hero_primary_waitlist" }}
+                >
+                  {c.primaryCta}
+                  <span className={styles.ctaArrow} aria-hidden>
+                    →
+                  </span>
+                </TrackedLink>
+                <TrackedLink
+                  className={styles.ctaGhost}
+                  href="/about"
+                  eventName="cta_click"
+                  eventParams={{ target: "hero_secondary_about" }}
+                >
+                  {c.secondaryCta}
+                </TrackedLink>
+              </div>
             </div>
-            <div className={styles.ctaRow}>
-              <Link className={styles.ctaPrimary} href="/contact">
-                {c.primaryCta}
-                <span className={styles.ctaArrow} aria-hidden>
-                  →
-                </span>
-              </Link>
-              <Link className={styles.ctaGhost} href="/about">
-                {c.secondaryCta}
-              </Link>
+
+            <div className={styles.heroVisual} aria-hidden>
+              <div className={styles.phoneFrame}>
+                <div className={styles.phoneNotch} />
+                <div className={styles.phoneScreen}>
+                  <div className={styles.mockHeader}>Today</div>
+                  <div className={styles.mockLine}>
+                    <span className={styles.mockDotSage} />
+                    <span>Post-visit routine</span>
+                  </div>
+                  <div className={styles.mockLine}>
+                    <span className={styles.mockDotGold} />
+                    <span>Follow-up in 6 days</span>
+                  </div>
+                  <div className={styles.mockLineMuted}>Hydration note from your last visit…</div>
+                </div>
+              </div>
+              <p className={styles.heroVisualCaption}>Directional UI mock — not a shipping screenshot.</p>
             </div>
           </div>
+
+          <div id="nl-waitlist" className={styles.waitlistBand}>
+            <LandingWaitlistForm placement="landing-hero" privacyHref={privacyHref} />
+          </div>
         </section>
+
+        <aside className={styles.trustStrip} aria-label="Site and product">
+          <p>
+            We read every waitlist message — it shapes what we build next. For press, partnerships, or care
+            questions, use{" "}
+            <Link href="/contact" className={styles.trustLink}>
+              Contact
+            </Link>
+            .
+          </p>
+        </aside>
 
         <section className={`${styles.section} ${styles.sectionMuted}`} aria-labelledby="nl-flow-heading">
           <div className={styles.sectionInner}>
@@ -178,9 +278,26 @@ export function NellaLanding({ copy }: { copy?: NellaLandingCopy | null }) {
           </div>
         </section>
 
+        <section className={styles.faqSection} aria-labelledby="nl-faq-heading">
+          <div className={styles.sectionInner}>
+            <p className={styles.eyebrow}>Questions</p>
+            <h2 id="nl-faq-heading" className={styles.sectionTitle}>
+              Before you join.
+            </h2>
+            <dl className={styles.faqList}>
+              {faqItems.map((item, index) => (
+                <div key={`${index}-${item.question.slice(0, 24)}`} className={styles.faqItem}>
+                  <dt className={styles.faqQ}>{item.question}</dt>
+                  <dd className={styles.faqA}>{item.answer}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </section>
+
         <section className={styles.bottomCta} aria-labelledby="nl-cta-heading">
           <div className={styles.bottomInner}>
-            <div>
+            <div className={styles.bottomCopy}>
               <h2 id="nl-cta-heading" className={styles.bottomTitle}>
                 Be first when the app opens up.
               </h2>
@@ -189,12 +306,11 @@ export function NellaLanding({ copy }: { copy?: NellaLandingCopy | null }) {
                 shapes what we build next.
               </p>
             </div>
-            <Link className={`${styles.ctaPrimary} ${styles.ctaOnDark}`} href="/contact">
-              {c.primaryCta}
-              <span className={styles.ctaArrow} aria-hidden>
-                →
-              </span>
-            </Link>
+            <LandingWaitlistForm
+              placement="landing-bottom"
+              privacyHref={privacyHref}
+              title="Join from here too"
+            />
           </div>
         </section>
       </main>

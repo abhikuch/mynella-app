@@ -49,7 +49,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     metadataBase: new URL(SITE_URL),
     title: {
-      default: `${SITE_NAME} — Nella & beauty editorial`,
+      default: `${SITE_NAME} — Nella companion app`,
       template: `%s | ${SITE_NAME}`,
     },
     description: DEFAULT_DESCRIPTION,
@@ -62,14 +62,14 @@ export async function generateMetadata(): Promise<Metadata> {
       locale: "en_IN",
       url: SITE_URL,
       siteName: SITE_NAME,
-      title: `${SITE_NAME} — Nella & beauty editorial`,
+      title: `${SITE_NAME} — Nella companion app`,
       description: DEFAULT_DESCRIPTION,
       images: defaultOgImages,
     },
     twitter: {
       card: "summary_large_image",
       site: TWITTER_HANDLE,
-      title: `${SITE_NAME} — Nella & beauty editorial`,
+      title: `${SITE_NAME} — Nella companion app`,
       description: DEFAULT_DESCRIPTION,
       images: [defaultOgUrl],
     },

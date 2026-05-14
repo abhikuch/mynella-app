@@ -15,20 +15,46 @@ export type PageCopySeedRow = {
   heroTitleEmphasis?: string;
   heroSubtitle?: string;
   contentEyebrow?: string;
+  landingFaq?: { question: string; answer: string }[];
 };
 
 export const pageCopySeed: PageCopySeedRow[] = [
   {
     _id: "pageCopy-home",
     routeKey: "home",
-    metaTitle: "MyNella — Makeup & beauty",
+    metaTitle: "Nella — calm companion for your aesthetic routine | MyNella",
     metaDescription:
-      "Curated makeup looks, tutorials, and honest product notes. Edit this copy in Sanity Studio.",
-    contentEyebrow: "Beauty editorial",
-    heroTitleLine1: "Looks you can live in",
-    heroTitleEmphasis: "Honest reviews & tutorials",
+      "Nella helps you remember visits, aftercare, and what comes next between appointments — without group-chat noise. Join the waitlist on MyNella.",
+    contentEyebrow: "The companion app",
+    heroPill1: "Visits & reminders",
+    heroPill2: "Aftercare nudges",
+    heroPill3: "Private by default",
+    heroTitleLine1: "Your treatments,",
+    heroTitleEmphasis: "one calm thread.",
     heroSubtitle:
-      "MyNella is built for beauty lovers who want editorial depth without the noise. Explore routines, ingredient callouts, and launch coverage — then tell us what you want to see next.",
+      "Nella is the personal layer for aesthetic care: fewer tabs, fewer “did I already do that?” moments, and a gentle rhythm while the full app ships. MyNella is where we share progress and take waitlist signups.",
+    landingFaq: [
+      {
+        question: "Is this medical advice?",
+        answer:
+          "No. Nella is a personal organization companion — not a clinician, not a diagnosis tool, and not a substitute for your provider’s instructions.",
+      },
+      {
+        question: "What data do you collect on this waitlist?",
+        answer:
+          "We store your email and India mobile number to contact you about launches and early access. See the Privacy Policy for retention and your rights.",
+      },
+      {
+        question: "When will the app be available?",
+        answer:
+          "We are in active development. Waitlist members hear first when private beta or public launch dates are set.",
+      },
+      {
+        question: "What is MyNella vs Nella?",
+        answer:
+          "MyNella is this marketing site and editorial home. Nella is the companion app we are building — developed on a separate track from these pages.",
+      },
+    ],
   },
   {
     _id: "pageCopy-about",

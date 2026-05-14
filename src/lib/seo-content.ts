@@ -6,9 +6,9 @@ export type SeoEntry = { title: string; description: string };
 
 export const SEO_CONTENT: Record<string, SeoEntry> = {
   "/": {
-    title: "MyNella — Makeup & beauty",
+    title: "Nella — calm companion for your aesthetic routine | MyNella",
     description:
-      "Discover MyNella — looks, tutorials, and product drops. Built with Next.js, Sanity CMS, and SEO-ready metadata.",
+      "Remember visits, aftercare, and what comes next between appointments — without group-chat noise. Join the Nella waitlist on MyNella.",
   },
   "/about": {
     title: "About MyNella",
@@ -47,8 +47,9 @@ export function getSeoFallback(pathname: string): SeoEntry {
   const hit = SEO_CONTENT[p] ?? (legacyKey ? SEO_CONTENT[legacyKey] : undefined);
   if (hit) return hit;
   return {
-    title: "MyNella — Makeup & beauty",
-    description: "MyNella — beauty content and products. Edit copy in Sanity or update SEO fallbacks in code.",
+    title: "Nella — calm companion for your aesthetic routine | MyNella",
+    description:
+      "Join the waitlist and read updates on MyNella — marketing home for the Nella companion app.",
   };
 }
 
