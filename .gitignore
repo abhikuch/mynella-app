@@ -1,0 +1,21 @@
+# Local env (never commit secrets)
+.env
+.env.local
+.env.*.local
+sanity/.env
+
+# Dependencies / build (when Next.js app exists)
+node_modules/
+.next/
+out/
+dist/
+
+# Vercel
+.vercel
+
+# OS / editor
+.DS_Store
+*.log
+
+# Cursor local hook state (avoid machine-specific noise in git)
+.cursor/hooks/state/
