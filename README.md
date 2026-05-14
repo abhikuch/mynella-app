@@ -7,6 +7,7 @@ Marketing site for **Nella** (companion app in separate development) and MyNella
 - **Routes:** `/` (Nella-branded landing), `/about`, `/contact`, `/terms`, `/privacy`, plus `robots.txt`, `sitemap.xml`, `llms.txt`, `ai.txt`, `api/revalidate-sanity`.
 - **Removed:** finance/blog/calculators/pillar UI, unused Sanity types (`post`, `faqItem`, `homeContent`, `marketingPage`, `portfolioStrategy`, …), dead libs and components.
 - **Sanity Studio:** `siteSettings`, `siteChrome`, `contactPage`, `pageCopy`, `partner`, `teamMember`; desk structure under **MyNella**.
+- **Design:** See [`DESIGN.md`](./DESIGN.md) for Nella landing (`--nl-*`) vs inner shell (`--cm-*`), typography, and landing composition (appendix L).
 
 ## Local development
 
