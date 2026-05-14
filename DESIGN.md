@@ -3,6 +3,8 @@
 Single source of truth for **color**, **typography**, **layout**, and **interaction** across this repo.  
 Implementation lives in CSS Modules + `src/styles/tokens.css` + `src/lib/fonts.ts`; this document describes **intent** and **canonical values** so new work stays consistent and avoids generic “template” UI.
 
+**Shorthand:** **“L”** = **landing page** (`/`). The full contract for that route is **Appendix L** below.
+
 ---
 
 ## 1. Product context
@@ -209,9 +211,9 @@ Editors should **not** paste hex in Portable Text to “fix” color — request
 
 ---
 
-## Appendix L — Landing page specification (`/`)
+## Appendix L — Landing page (`/`)
 
-This appendix is the **landing composition contract** for `NellaLanding` and related modules.
+**“L”** = this route only: the **Nella marketing landing** implemented by `NellaLanding` + `LandingWaitlistForm` + `TrackedLink`. Not About, Contact, or legal pages. What follows is the **composition contract** for that surface.
 
 ### L.1 Information order (top → bottom)
 
@@ -237,7 +239,13 @@ This appendix is the **landing composition contract** for `NellaLanding` and rel
 - `TrackedLink` emits `cta_click` with `target` param.
 - Successful waitlist posts emit `waitlist_submit` with `form_placement` `hero` | `bottom`.
 
-### L.4 Future work (optional)
+### L.4 Responsive (implemented)
+
+- **≤780px:** Flow grid and feature grid collapse to **single column**; flow cards stack with **1px borders** instead of a multi-column grid.
+- **≥800px:** Bottom CTA becomes **two columns** (copy + waitlist form).
+- **Sticky header:** `scroll-margin-top` on `#nl-waitlist` so in-page anchors clear the bar (~`5rem`).
+
+### L.5 Future work (optional)
 
 - Unify inner shell to **warm light** or **shared bronze accent** to match Nella landing.
 - Add real **product photography** slot in hero when assets exist (document dimensions here when added).
