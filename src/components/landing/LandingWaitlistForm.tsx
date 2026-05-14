@@ -17,9 +17,16 @@ type Props = {
   placement: LandingWaitlistPlacement;
   privacyHref: string;
   title?: string;
+  /** Dark footer band — inverts field chrome for contrast on `--nl-ink` backgrounds. */
+  tone?: "light" | "dark";
 };
 
-export function LandingWaitlistForm({ placement, privacyHref, title = "Get launch updates" }: Props) {
+export function LandingWaitlistForm({
+  placement,
+  privacyHref,
+  title = "Get launch updates",
+  tone = "light",
+}: Props) {
   const [error, setError] = useState<string | null>(null);
   const [done, setDone] = useState(false);
   const [pending, startTransition] = useTransition();
@@ -51,8 +58,10 @@ export function LandingWaitlistForm({ placement, privacyHref, title = "Get launc
   const honeypotId =
     placement === "landing-hero" ? "nl-waitlist-hp-hero" : "nl-waitlist-hp-bottom";
 
+  const wrapClass = tone === "dark" ? `${styles.wrap} ${styles.wrapDark}` : styles.wrap;
+
   return (
-    <div className={styles.wrap}>
+    <div className={wrapClass}>
       <h2 className={styles.title}>{title}</h2>
       {done ? (
         <p className={styles.success} role="status">

@@ -14,7 +14,7 @@ export const founderBioBlocks = [
         _type: "span" as const,
         _key: "bio-1-span",
         text:
-          "MyNella started as a small editorial project: honest swatches, wearable looks, and zero gatekeeping around who gets to play with makeup.",
+          "MyNella exists to share how we are building Nella — a calm companion for aesthetic routines — and to collect the stories that should shape it.",
         marks: [],
       },
     ],
@@ -29,7 +29,7 @@ export const founderBioBlocks = [
         _type: "span" as const,
         _key: "bio-2-span",
         text:
-          "Today the site is powered by the same stack we recommend to beauty brands — Next.js for speed, Sanity for content, and SEO patterns you can extend as you grow.",
+          "The site runs on Next.js and Sanity so we can iterate quickly on copy, waitlist flows, and compliance-friendly pages without shipping a new build for every tweak.",
         marks: [],
       },
     ],
@@ -38,17 +38,17 @@ export const founderBioBlocks = [
 
 /** Fields for `siteSettings` (no _id / _type). */
 export const siteSettingsDefaults = {
-  homeEyebrowTag: "Makeup · tutorials · drops",
-  homeTitleLine1: "Your look,",
-  homeTitleEmphasis: "your story.",
+  homeEyebrowTag: "Nella · companion app",
+  homeTitleLine1: "Your treatments,",
+  homeTitleEmphasis: "one calm thread.",
   homeSubtitle:
-    "MyNella is a beauty-first marketing site. Swap this hero copy in Sanity Studio under Site settings — keep it fresh for launches, seasons, and campaigns.",
+    "Waitlist and updates for Nella — a personal layer for visits, aftercare, and what comes next. Edit this block in Sanity under Site settings.",
   aboutPill1: "Editorial",
   aboutPill2: "Sanity CMS",
-  aboutTitleLine1: "Built for creators",
-  aboutTitleEmphasis: "and curious readers.",
+  aboutTitleLine1: "Built for people",
+  aboutTitleEmphasis: "who live in their skin.",
   aboutSub:
-    "We publish looks you can actually wear, explain what worked (and what did not), and keep the site fast with a modern stack.",
+    "We publish here first: how we think about the product, what we are learning, and where to sign up for early access.",
   founderName: "Founder name",
   founderRole: "Editor-in-chief",
   founderInitials: "MN",

@@ -113,65 +113,40 @@ export function NellaLanding({
 
       <main id="nl-main">
         <section className={styles.hero} aria-labelledby="nl-hero-heading">
-          <div className={styles.heroGrid}>
-            <div className={styles.heroCopy}>
-              <p className={styles.eyebrow}>{c.eyebrow}</p>
-              <p className={styles.brandClarify}>
-                <strong>MyNella</strong> is this site — updates, editorial, and the waitlist.{" "}
-                <strong>Nella</strong> is the app we&apos;re building.
-              </p>
-              <h1 id="nl-hero-heading" className={styles.heroTitle}>
-                {c.heroTitle}{" "}
-                <span className={styles.heroTitleAccent}>{c.heroTitleAccent}</span>
-              </h1>
-              <p className={styles.heroLead}>{c.heroLead}</p>
-              <div className={styles.pillRow} role="list">
-                {pills.map((label) => (
-                  <span key={label} className={styles.pill} role="listitem">
-                    {label}
-                  </span>
-                ))}
-              </div>
-              <div className={styles.ctaRow}>
-                <TrackedLink
-                  className={styles.ctaPrimary}
-                  href="#nl-waitlist"
-                  eventName="cta_click"
-                  eventParams={{ target: "hero_primary_waitlist" }}
-                >
-                  {c.primaryCta}
-                  <span className={styles.ctaArrow} aria-hidden>
-                    →
-                  </span>
-                </TrackedLink>
-                <TrackedLink
-                  className={styles.ctaGhost}
-                  href="/about"
-                  eventName="cta_click"
-                  eventParams={{ target: "hero_secondary_about" }}
-                >
-                  {c.secondaryCta}
-                </TrackedLink>
-              </div>
-            </div>
-
-            <div className={styles.heroVisual} aria-hidden>
-              <div className={styles.phoneFrame}>
-                <div className={styles.phoneNotch} />
-                <div className={styles.phoneScreen}>
-                  <div className={styles.mockHeader}>Today</div>
-                  <div className={styles.mockLine}>
-                    <span className={styles.mockDotSage} />
-                    <span>Post-visit routine</span>
-                  </div>
-                  <div className={styles.mockLine}>
-                    <span className={styles.mockDotGold} />
-                    <span>Follow-up in 6 days</span>
-                  </div>
-                  <div className={styles.mockLineMuted}>Hydration note from your last visit…</div>
-                </div>
-              </div>
-              <p className={styles.heroVisualCaption}>Directional UI mock — not a shipping screenshot.</p>
+          <div className={styles.heroInner}>
+            <p className={styles.eyebrow}>{c.eyebrow}</p>
+            <p className={styles.brandClarify}>
+              <strong>MyNella</strong> is this site — updates, editorial, and the waitlist.{" "}
+              <strong>Nella</strong> is the app we&apos;re building.
+            </p>
+            <h1 id="nl-hero-heading" className={styles.heroTitle}>
+              {c.heroTitle}{" "}
+              <span className={styles.heroTitleAccent}>{c.heroTitleAccent}</span>
+            </h1>
+            <p className={styles.heroLead}>{c.heroLead}</p>
+            {pills.length > 0 ? (
+              <p className={styles.signalLine}>{pills.filter(Boolean).join(" · ")}</p>
+            ) : null}
+            <div className={styles.ctaRow}>
+              <TrackedLink
+                className={styles.ctaPrimary}
+                href="#nl-waitlist"
+                eventName="cta_click"
+                eventParams={{ target: "hero_primary_waitlist" }}
+              >
+                {c.primaryCta}
+                <span className={styles.ctaArrow} aria-hidden>
+                  →
+                </span>
+              </TrackedLink>
+              <TrackedLink
+                className={styles.ctaGhost}
+                href="/about"
+                eventName="cta_click"
+                eventParams={{ target: "hero_secondary_about" }}
+              >
+                {c.secondaryCta}
+              </TrackedLink>
             </div>
           </div>
 
@@ -243,7 +218,9 @@ export function NellaLanding({
             </p>
             <div className={styles.featureGrid}>
               <article className={styles.featureCard}>
-                <div className={styles.featureIcon} aria-hidden />
+                <p className={styles.featureIndex} aria-hidden>
+                  1
+                </p>
                 <h3 className={styles.featureTitle}>One timeline</h3>
                 <p className={styles.featureBody}>
                   Visits, home routines, and notes share a single thread so you are never hunting for
@@ -251,7 +228,9 @@ export function NellaLanding({
                 </p>
               </article>
               <article className={styles.featureCard}>
-                <div className={styles.featureIcon} aria-hidden />
+                <p className={styles.featureIndex} aria-hidden>
+                  2
+                </p>
                 <h3 className={styles.featureTitle}>Tasteful signals</h3>
                 <p className={styles.featureBody}>
                   Status and urgency use color with restraint — sage for done, gold for soon, rose
@@ -259,7 +238,9 @@ export function NellaLanding({
                 </p>
               </article>
               <article className={styles.featureCard}>
-                <div className={styles.featureIcon} aria-hidden />
+                <p className={styles.featureIndex} aria-hidden>
+                  3
+                </p>
                 <h3 className={styles.featureTitle}>Share on your terms</h3>
                 <p className={styles.featureBody}>
                   Monthly snapshots and summaries you can share with a trusted person — or keep
@@ -310,6 +291,7 @@ export function NellaLanding({
               placement="landing-bottom"
               privacyHref={privacyHref}
               title="Join from here too"
+              tone="dark"
             />
           </div>
         </section>

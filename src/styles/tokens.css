@@ -1,10 +1,6 @@
 /**
- * Clearmind design tokens — extracted from clearmind-v4.html
- * Import once at app root; pair with DESIGN.md for usage rules.
- *
- * Template rule: avoid one-off px/hex/rgba in modules — use tokens here for
- * breakpoints, hero shells, content measures, glows, status/chart colors,
- * line-heights, and elevation. Page CSS should only reference `--cm-*`.
+ * MyNella marketing shell — dark UI tokens for inner pages (contact, about, legal).
+ * Import once at app root.
  */
 
 :root {

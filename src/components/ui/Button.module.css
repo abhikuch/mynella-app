@@ -23,7 +23,7 @@
 }
 
 .btn:focus-visible {
-  outline: 2px solid var(--cm-accent);
+  outline: 2px solid rgba(201, 162, 39, 0.85);
   outline-offset: 3px;
 }
 

@@ -12,9 +12,8 @@
 
 ## Learned Workspace Facts
 
-- This repo is the Clearmind public marketing site: Next.js App Router, CSS Modules with shared design tokens, and Sanity as the primary CMS.
-- Primary information architecture includes Home, About, PMS (e.g. Polaris), Algo strategies (e.g. Optimus, Pledge+, Polaris Lite), Model Portfolios (nested Alpha and Quanto families), Blog, and Contact.
-- Investor login is intended to point at `strategy.iamclearmind.com`; the primary book-a-call flow uses `cal.com/iamclearmind`.
-- Sanity alignment matters for marketing chrome and pages via seeds and document types such as home content, site chrome, site settings, and team members; keep Studio schema and seeds consistent with the live UI.
-- `docs/SEO_MEASUREMENT_CHECKLIST.md` is the operational checklist for ongoing SEO measurement after deploys.
+- This repo is the **MyNella** marketing site (Nella companion app): Next.js App Router, CSS Modules with shared `--cm-*` tokens on inner pages, and Sanity for CMS.
+- Primary routes: Home (Nella landing), About, Contact, Terms, Privacy, plus SEO files and `/api/revalidate-sanity`.
+- Sanity alignment matters for `siteSettings`, `siteChrome`, `pageCopy`, `contactPage`, and team members; keep Studio schema and seeds consistent with the live UI.
 - Hosted Sanity Studio should be redeployed when desk or schema structure changes so the editing UI matches production.
+- After SEO-related changes ship, follow the weekly steps in `docs/SEO_MEASUREMENT_CHECKLIST.md` (GSC queries, page rows, indexing, CWV).

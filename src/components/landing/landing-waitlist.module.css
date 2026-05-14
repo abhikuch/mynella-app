@@ -1,46 +1,42 @@
 /**
- * Waitlist form on Nella landing — uses same palette tokens as nella-landing (duplicated
- * for a self-contained client island without Clearmind token coupling).
+ * Waitlist fields — matches Nella landing palette (no Clearmind tokens).
  */
 .wrap {
-  --w-ivory: #faf7f2;
-  --w-espresso: #2c1810;
-  --w-espresso-deep: #1f1410;
-  --w-gold: #8f6f3e;
-  --w-grey: #888780;
-  --w-line: rgba(44, 24, 16, 0.1);
-  --w-sage: #4a7e49;
-  --w-radius: 14px;
+  --w-paper: #f4f1eb;
+  --w-ink: #1a1512;
+  --w-muted: #6b625a;
+  --w-rule: rgba(26, 21, 18, 0.14);
+  --w-accent: #7a5c32;
   width: 100%;
-  max-width: 36rem;
+  max-width: 28rem;
 }
 
 .title {
   font-family: var(--nl-font-display, ui-serif, Georgia, serif);
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.02em;
-  color: var(--nl-espresso, var(--w-espresso));
-  margin: 0 0 8px;
+  color: var(--nl-ink, var(--w-ink));
+  margin: 0 0 0.4rem;
 }
 
 .intro {
   font-size: 0.8125rem;
   line-height: 1.55;
-  color: var(--nl-grey, var(--w-grey));
-  margin: 0 0 14px;
+  color: var(--nl-muted, var(--w-muted));
+  margin: 0 0 0.85rem;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0.75rem;
 }
 
 .row {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
+  gap: 0.75rem;
 }
 
 @media (min-width: 520px) {
@@ -52,34 +48,34 @@
 .field {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 0.35rem;
   min-width: 0;
 }
 
 .label {
   font-size: 0.625rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--nl-gold, var(--w-gold));
+  color: var(--nl-muted, var(--w-muted));
 }
 
 .input {
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--nl-espresso, var(--w-espresso));
-  background: rgba(255, 252, 246, 0.95);
-  border: 1px solid var(--nl-line, var(--w-line));
-  border-radius: var(--w-radius);
-  padding: 11px 13px;
+  color: var(--nl-ink, var(--w-ink));
+  background: var(--nl-paper, var(--w-paper));
+  border: 1px solid var(--nl-rule, var(--w-rule));
+  border-radius: 2px;
+  padding: 0.65rem 0.75rem;
   outline: none;
   width: 100%;
   min-width: 0;
 }
 
 .input:focus {
-  border-color: rgba(143, 111, 62, 0.45);
-  box-shadow: 0 0 0 3px rgba(143, 111, 62, 0.12);
+  border-color: var(--nl-ink, var(--w-ink));
+  box-shadow: 0 0 0 1px var(--nl-ink, var(--w-ink));
 }
 
 .hint {
@@ -87,66 +83,61 @@
   margin: 0;
   font-size: 0.75rem;
   line-height: 1.45;
-  color: var(--nl-grey, var(--w-grey));
+  color: var(--nl-muted, var(--w-muted));
 }
 
 .consent {
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 0.5rem;
   font-size: 0.75rem;
   line-height: 1.45;
-  color: var(--nl-grey, var(--w-grey));
+  color: var(--nl-muted, var(--w-muted));
 }
 
 .consent input {
-  margin-top: 3px;
+  margin-top: 0.15rem;
   flex-shrink: 0;
-  accent-color: var(--nl-sage, var(--w-sage));
+  accent-color: var(--nl-accent, var(--w-accent));
 }
 
 .consent a {
-  color: var(--nl-gold, var(--w-gold));
+  color: var(--nl-accent, var(--w-accent));
   font-weight: 600;
 }
 
 .submit {
   align-self: flex-start;
-  padding: 12px 20px;
-  border-radius: var(--w-radius);
+  padding: 0.65rem 1.1rem;
+  border-radius: 2px;
   font-size: 0.875rem;
-  font-weight: 700;
-  color: var(--nl-ivory, var(--w-ivory));
-  background: linear-gradient(
-    165deg,
-    var(--nl-espresso-mid, #3a2418) 0%,
-    var(--nl-espresso, var(--w-espresso)) 45%,
-    var(--nl-espresso-deep, var(--w-espresso-deep)) 100%
-  );
-  border: none;
+  font-weight: 600;
+  color: var(--nl-paper, var(--w-paper));
+  background: var(--nl-ink, var(--w-ink));
+  border: 1px solid var(--nl-ink, var(--w-ink));
   cursor: pointer;
   transition: opacity 0.15s ease;
 }
 
 .submit:hover:not(:disabled) {
-  opacity: 0.92;
+  opacity: 0.88;
 }
 
 .submit:disabled {
-  opacity: 0.55;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
 .error {
   font-size: 0.8125rem;
-  color: var(--nl-rose, #8c5249);
+  color: #8b4a3a;
   margin: 0;
 }
 
 .success {
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--nl-sage, var(--w-sage));
+  color: var(--nl-accent, var(--w-accent));
   margin: 0;
 }
 
@@ -160,4 +151,62 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* Dark band (bottom CTA) */
+.wrapDark .title {
+  color: #f4f1eb;
+}
+
+.wrapDark .intro {
+  color: rgba(244, 241, 235, 0.72);
+}
+
+.wrapDark .label {
+  color: rgba(244, 241, 235, 0.55);
+}
+
+.wrapDark .input {
+  color: #f4f1eb;
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(244, 241, 235, 0.22);
+}
+
+.wrapDark .input::placeholder {
+  color: rgba(244, 241, 235, 0.45);
+}
+
+.wrapDark .input:focus {
+  border-color: rgba(244, 241, 235, 0.55);
+  box-shadow: 0 0 0 1px rgba(244, 241, 235, 0.35);
+}
+
+.wrapDark .hint {
+  color: rgba(244, 241, 235, 0.6);
+}
+
+.wrapDark .consent {
+  color: rgba(244, 241, 235, 0.68);
+}
+
+.wrapDark .consent a {
+  color: #e8dcc4;
+}
+
+.wrapDark .submit {
+  color: #1a1512;
+  background: #f4f1eb;
+  border-color: #f4f1eb;
+}
+
+.wrapDark .submit:hover:not(:disabled) {
+  opacity: 0.92;
+}
+
+.wrapDark .success {
+  color: #e8dcc4;
+}
+
+.wrapDark .error {
+  color: #f0b4a8;
 }

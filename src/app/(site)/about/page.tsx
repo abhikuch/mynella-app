@@ -34,9 +34,8 @@ export default async function AboutPage() {
         </h1>
         {sub ? <p className={aboutLocalStyles.p}>{sub}</p> : null}
         <p className={aboutLocalStyles.p}>
-          MyNella is not a finance product. This repository keeps the essentials — Next.js for pages, Sanity for structured
-          content, Vercel for hosting, and Git for change control — so your team can focus on campaigns, launches, and
-          storytelling.
+          MyNella is the public home for Nella — a calm companion for visits, aftercare, and the space between
+          appointments. We ship updates here first: waitlist, launch notes, and how we think about the product.
         </p>
         <div className={aboutLocalStyles.actions}>
           <Button href="/contact">Work with us</Button>
