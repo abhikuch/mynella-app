@@ -1,0 +1,34 @@
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--cm-text-xs-lg);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cm-text-muted);
+  margin-bottom: 20px;
+  transition: color var(--cm-duration-micro) var(--cm-ease-micro);
+}
+
+.eyebrow::before {
+  content: "";
+  width: 16px;
+  height: 1px;
+  background: var(--cm-text-muted);
+  flex-shrink: 0;
+  transition:
+    width var(--cm-duration-micro) var(--cm-ease-micro),
+    background var(--cm-duration-micro) var(--cm-ease-micro);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .eyebrow:hover {
+    color: var(--cm-text-tertiary);
+  }
+
+  .eyebrow:hover::before {
+    width: 22px;
+    background: var(--cm-text-tertiary);
+  }
+}

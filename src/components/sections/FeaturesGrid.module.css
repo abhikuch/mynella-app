@@ -1,0 +1,76 @@
+.lead {
+  font-size: var(--cm-text-body-lg);
+  line-height: var(--cm-leading-relaxed);
+  color: var(--cm-text-tertiary);
+  max-width: min(var(--cm-prose-max), 100%);
+  margin-top: 18px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  border: 1px solid var(--cm-line);
+  border-radius: var(--cm-radius-3xl);
+  overflow: hidden;
+  background: var(--cm-line);
+  gap: 1px;
+  margin-top: 48px;
+}
+
+.grid > .cell {
+  grid-column: span 4;
+  min-width: 0;
+}
+
+.cell {
+  background: var(--cm-surface-1);
+  padding: 36px 30px;
+  transition: background 0.2s var(--cm-ease-out-soft);
+}
+
+.cell:hover {
+  background: var(--cm-surface-2);
+}
+
+.icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--cm-surface-3);
+  border: 1px solid var(--cm-line-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.icon svg {
+  width: 20px;
+  height: 20px;
+  color: var(--cm-icon-accent);
+}
+
+.cellTitle {
+  font-size: var(--cm-text-h4);
+  font-weight: 700;
+  color: var(--cm-text-primary);
+  margin-bottom: 8px;
+}
+
+.cellDesc {
+  font-size: var(--cm-text-sm-body);
+  color: var(--cm-text-tertiary);
+  line-height: var(--cm-leading-body);
+}
+
+@media (max-width: 940px) {
+  .grid > .cell {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid > .cell {
+    grid-column: span 12;
+  }
+}

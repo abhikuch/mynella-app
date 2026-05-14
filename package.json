@@ -1,0 +1,39 @@
+{
+  "name": "mynella-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "tsc --noEmit",
+    "studio": "bash scripts/run-sanity.sh dev --port 3333",
+    "studio:deploy": "bash scripts/run-sanity.sh deploy",
+    "seed": "bash scripts/run-sanity.sh exec ./scripts/seedDefaults.ts",
+    "pull:vercel": "vercel pull --yes --environment production",
+    "pull:sanity": "bash scripts/run-sanity.sh dataset export production ./backups/production-latest.ndjson --overwrite",
+    "wordcount:pillars": "node scripts/pillar-word-count.mjs",
+    "audit:responsive": "node scripts/responsive-audit.mjs",
+    "ops:resend": "node scripts/ops-check-resend.mjs",
+    "resend:seed-templates": "node scripts/resend-seed-templates.mjs"
+  },
+  "dependencies": {
+    "@portabletext/react": "^3.2.1",
+    "@portabletext/types": "^4.0.2",
+    "@sanity/client": "^6.28.0",
+    "@sanity/image-url": "^1.1.0",
+    "next": "^16.2.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "resend": "^6.9.4"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.1",
+    "playwright": "^1.49.1",
+    "typescript": "^5.9.3"
+  }
+}

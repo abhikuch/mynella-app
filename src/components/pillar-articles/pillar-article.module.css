@@ -1,0 +1,224 @@
+.wrap {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+@media (min-width: 768px) {
+  .wrap {
+    padding: 2.5rem 1.5rem 5rem;
+  }
+}
+
+.breadcrumbs {
+  font-size: var(--cm-text-sm, 0.875rem);
+  color: var(--cm-text-tertiary);
+  margin-bottom: 1.75rem;
+}
+
+.breadcrumbs ol {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+  align-items: center;
+}
+
+.breadcrumbs li:not(:last-child)::after {
+  content: "/";
+  margin-left: 0.5rem;
+  opacity: 0.45;
+}
+
+.breadcrumbs a {
+  color: var(--cm-text-secondary);
+  text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+  color: var(--cm-text-primary);
+  text-decoration: underline;
+}
+
+.article {
+  color: var(--cm-text-secondary);
+}
+
+.article h1 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  margin-bottom: 1.25rem;
+}
+
+.lede {
+  font-size: 1.0625rem;
+  line-height: var(--cm-leading-prose, 1.65);
+  color: var(--cm-text-secondary);
+  margin-bottom: 2rem;
+}
+
+.lede p + p {
+  margin-top: 1rem;
+}
+
+.article h2 {
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  margin: 2.5rem 0 1rem;
+}
+
+.article h3 {
+  font-size: var(--cm-text-h3-ui);
+  margin: 1.75rem 0 0.75rem;
+}
+
+.article p {
+  margin-bottom: 1rem;
+}
+
+.article ul,
+.article ol {
+  margin: 0 0 1.25rem 1.25rem;
+  padding: 0;
+}
+
+.article li {
+  margin-bottom: 0.5rem;
+}
+
+.article a {
+  color: var(--cm-text-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.article a:hover {
+  opacity: 0.9;
+}
+
+.callout {
+  margin: 2rem 0;
+  padding: 1.25rem 1.25rem;
+  border-left: 3px solid var(--cm-text-tertiary);
+  background: color-mix(in srgb, var(--cm-text-primary) 4%, transparent);
+  font-size: 0.9375rem;
+}
+
+/* E-E-A-T author block (pillars + optional blog) */
+.byline {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  padding: 1.25rem 1.25rem;
+  border-radius: 0.5rem;
+  background: color-mix(in srgb, var(--cm-text-primary) 5%, transparent);
+  border: 1px solid color-mix(in srgb, var(--cm-text-secondary) 12%, transparent);
+}
+
+.bylinePhoto {
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.bylineText {
+  min-width: 0;
+}
+
+.bylineMeta {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  color: var(--cm-text-primary);
+}
+
+.bylineLabel {
+  color: var(--cm-text-tertiary);
+  font-weight: 500;
+}
+
+.bylineSep {
+  color: var(--cm-text-tertiary);
+}
+
+.bylineCreds {
+  margin: 0 0 0.35rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--cm-text-secondary);
+}
+
+.bylineRegs {
+  margin: 0 0 0.5rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  color: var(--cm-text-tertiary);
+}
+
+.lastUpdated {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--cm-text-tertiary);
+}
+
+/* Team profile hero (full author page) */
+.authorHero {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--cm-text-secondary) 14%, transparent);
+}
+
+@media (min-width: 640px) {
+  .authorHero {
+    grid-template-columns: minmax(0, 1fr) 11rem;
+    align-items: start;
+  }
+}
+
+.authorHeroMain h1 {
+  margin-bottom: 0.75rem;
+}
+
+.authorHeroSub {
+  font-size: 1.0625rem;
+  color: var(--cm-text-secondary);
+  margin: 0 0 1rem;
+  line-height: var(--cm-leading-prose, 1.65);
+}
+
+.authorHeroCreds {
+  margin: 0 0 1rem;
+  font-size: 0.9375rem;
+  color: var(--cm-text-secondary);
+}
+
+.authorHeroRegs {
+  margin: 0 0 1rem;
+  font-size: 0.8125rem;
+  color: var(--cm-text-tertiary);
+  letter-spacing: 0.02em;
+}
+
+.authorHeroLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  font-size: 0.9375rem;
+}
+
+.authorHeroLinks a {
+  color: var(--cm-text-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.authorHeroPhotoWrap {
+  justify-self: center;
+}
+
+.authorHeroPhoto {
+  border-radius: 0.5rem;
+  object-fit: cover;
+  width: 11rem;
+  height: auto;
+}

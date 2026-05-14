@@ -1,0 +1,47 @@
+.section {
+  padding: var(--cm-section-y) 0;
+}
+
+.default {
+  background: var(--cm-ink);
+}
+
+.alt {
+  background: var(--cm-ink-2);
+}
+
+.container {
+  max-width: var(--cm-max-width);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--cm-page-gutter);
+  box-sizing: border-box;
+}
+
+/* Vertical guides: 12 columns with shared gutter; children span full width by default */
+.columnGrid {
+  display: grid;
+  grid-template-columns: repeat(var(--cm-grid-columns), minmax(0, 1fr));
+  column-gap: var(--cm-grid-gutter);
+  row-gap: 0;
+  width: 100%;
+}
+
+.columnGrid > * {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+
+@media (max-width: 940px) {
+  .section {
+    padding: var(--cm-section-y-sm) 0;
+  }
+
+  .container {
+    padding: 0 var(--cm-page-gutter-sm);
+  }
+
+  .columnGrid {
+    column-gap: var(--cm-grid-gutter-sm);
+  }
+}

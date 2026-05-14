@@ -1,0 +1,511 @@
+/* ——————————————————————— Hero ——————————————————————— */
+.hero {
+  min-height: var(--cm-hero-min-product);
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroGrid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: var(--cm-hero-grid-image);
+  background-size: var(--cm-hero-grid-size) var(--cm-hero-grid-size);
+  mask-image: var(--cm-mask-hero-fade);
+  -webkit-mask-image: var(--cm-mask-hero-fade);
+}
+
+.heroGlow {
+  position: absolute;
+  width: var(--cm-blob-w-hero);
+  height: var(--cm-blob-h-hero);
+  pointer-events: none;
+  background: var(--cm-glow-accent-weak);
+  top: -60px;
+  right: -120px;
+}
+
+.heroContainer {
+  max-width: var(--cm-max-width);
+  margin: 0 auto;
+  padding: 0 var(--cm-page-gutter);
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  text-align: left;
+}
+
+.heroPills {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--cm-line-2);
+  background: var(--cm-pill-bg);
+  border-radius: var(--cm-radius-pill);
+  padding: 5px 14px;
+  font-size: var(--cm-text-sm);
+  font-weight: 500;
+  color: var(--cm-text-tertiary);
+}
+
+.pillDot {
+  width: 6px;
+  height: 6px;
+  background: var(--cm-accent);
+  border-radius: 50%;
+}
+
+.heroTitle {
+  font-family: var(--cm-font-display);
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--cm-text-primary);
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  max-width: var(--cm-measure-hero-title);
+  margin-bottom: 24px;
+}
+
+.heroTitle em {
+  color: var(--cm-text-tertiary);
+  font-style: italic;
+}
+
+.heroSub {
+  max-width: var(--cm-measure-hero-lead-wide);
+  margin-bottom: 40px;
+  font-size: var(--cm-text-body-lg);
+  color: var(--cm-text-tertiary);
+  line-height: var(--cm-leading-relaxed);
+}
+
+.heroCtaWrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.heroStats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--cm-line);
+  padding-top: 28px;
+  gap: 24px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.statValue {
+  font-family: var(--cm-font-display);
+  font-size: var(--cm-text-stat);
+  font-weight: 700;
+  color: var(--cm-text-primary);
+  letter-spacing: -0.02em;
+}
+
+.statValueAccent {
+  color: var(--cm-accent);
+}
+
+.statUnit {
+  font-size: var(--cm-text-h4);
+  font-weight: 400;
+  color: var(--cm-text-tertiary);
+}
+
+.statLabel {
+  font-size: var(--cm-text-sm);
+  color: var(--cm-text-muted);
+  font-weight: 500;
+}
+
+/* ——————————————————— What Is Pledge+ (Explainer) ——————————————————— */
+.explainerGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+  margin-top: 8px;
+}
+
+.explainerDesc {
+  font-size: var(--cm-text-body);
+  color: var(--cm-text-secondary);
+  line-height: 1.85;
+  margin-bottom: 24px;
+}
+
+.explainerHighlight {
+  font-size: var(--cm-text-base);
+  font-weight: 600;
+  color: var(--cm-accent);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.explainerHighlight::before {
+  content: "";
+  width: 12px;
+  height: 2px;
+  background: var(--cm-accent);
+  flex-shrink: 0;
+}
+
+.paramTable {
+  background: var(--cm-surface-1);
+  border: 1px solid var(--cm-line);
+  border-radius: var(--cm-radius-2xl);
+  overflow: hidden;
+}
+
+.paramRow {
+  display: flex;
+  border-bottom: 1px solid var(--cm-line);
+  padding: 16px 24px;
+}
+
+.paramRow:last-child {
+  border-bottom: none;
+}
+
+.paramKey {
+  flex: 1;
+  font-size: var(--cm-text-sm-body);
+  color: var(--cm-text-muted);
+  font-weight: 500;
+}
+
+.paramVal {
+  flex: 1;
+  font-size: var(--cm-text-sm-body);
+  color: var(--cm-text-primary);
+  font-weight: 600;
+  text-align: right;
+}
+
+.paramValAccent {
+  color: var(--cm-accent);
+}
+
+/* ——————————————————— How It Works (Steps) ——————————————————— */
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 36px;
+}
+
+.stepCard {
+  background: var(--cm-surface-1);
+  border: 1px solid var(--cm-line);
+  border-radius: var(--cm-radius-2xl);
+  padding: 28px 22px;
+  transition: border-color var(--cm-duration-normal);
+}
+
+.stepCard:hover {
+  border-color: var(--cm-line-2);
+}
+
+.stepNum {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--cm-accent-muted);
+  border: 1px solid var(--cm-accent-border);
+  font-size: var(--cm-text-xs);
+  font-weight: 700;
+  color: var(--cm-accent);
+  margin-bottom: 16px;
+}
+
+.stepTitle {
+  font-size: var(--cm-text-base);
+  font-weight: 700;
+  color: var(--cm-text-primary);
+  margin-bottom: 8px;
+}
+
+.stepDesc {
+  font-size: var(--cm-text-sm-body);
+  color: var(--cm-text-tertiary);
+  line-height: var(--cm-leading-ui);
+}
+
+.stepAssets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.assetTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: var(--cm-radius-pill);
+  border: 1px solid var(--cm-line-2);
+  background: var(--cm-ink-3);
+  font-size: var(--cm-text-xs);
+  color: var(--cm-text-tertiary);
+  font-weight: 500;
+}
+
+.assetDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--cm-accent);
+}
+
+/* ——————————————————— Why Pledge+ (Benefits) ——————————————————— */
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 36px;
+}
+
+.benefitCard {
+  background: var(--cm-surface-1);
+  border: 1px solid var(--cm-line);
+  border-radius: var(--cm-radius-2xl);
+  padding: 28px 24px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  transition: border-color var(--cm-duration-normal);
+}
+
+.benefitCard:hover {
+  border-color: var(--cm-line-2);
+}
+
+.benefitIcon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--cm-radius-lg);
+  background: var(--cm-accent-muted);
+  border: 1px solid var(--cm-accent-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.benefitIcon svg {
+  width: 20px;
+  height: 20px;
+  color: var(--cm-icon-accent);
+}
+
+.benefitTitle {
+  font-size: var(--cm-text-base);
+  font-weight: 700;
+  color: var(--cm-text-primary);
+  margin-bottom: 6px;
+}
+
+.benefitDesc {
+  font-size: var(--cm-text-sm-body);
+  color: var(--cm-text-tertiary);
+  line-height: var(--cm-leading-body);
+}
+
+/* ——————————————————— Suitable Investor ——————————————————— */
+.profileGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 36px;
+}
+
+.profileCard {
+  background: var(--cm-surface-1);
+  border: 1px solid var(--cm-line);
+  border-radius: var(--cm-radius-2xl);
+  padding: 28px 24px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  transition: border-color var(--cm-duration-normal);
+}
+
+.profileCard:hover {
+  border-color: var(--cm-line-2);
+}
+
+.profileIcon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--cm-accent-muted);
+  border: 1px solid var(--cm-accent-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileIcon svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--cm-icon-accent);
+  stroke-width: 2.5;
+  fill: none;
+}
+
+.profileText {
+  font-size: var(--cm-text-body);
+  color: var(--cm-text-secondary);
+  line-height: var(--cm-leading-body);
+}
+
+.accentCallout {
+  margin-top: 28px;
+  padding: 20px 24px;
+  background: var(--cm-accent-muted);
+  border: 1px solid var(--cm-accent-border);
+  border-radius: var(--cm-radius-2xl);
+  font-size: var(--cm-text-base);
+  font-weight: 600;
+  color: var(--cm-accent);
+  text-align: left;
+  line-height: var(--cm-leading-body);
+}
+
+/* ——————————————————— Philosophy ——————————————————— */
+.philBlock {
+  margin-top: 36px;
+  background: var(--cm-surface-1);
+  border: 1px solid var(--cm-line);
+  border-radius: var(--cm-radius-2xl);
+  padding: 48px 40px;
+  text-align: left;
+}
+
+.philQuote {
+  font-family: var(--cm-font-display);
+  font-size: var(--cm-text-h3-card);
+  font-weight: 700;
+  color: var(--cm-text-primary);
+  line-height: 1.4;
+  margin-bottom: 24px;
+  font-style: italic;
+}
+
+.philQuote em {
+  color: var(--cm-accent);
+  font-style: italic;
+}
+
+.philDesc {
+  font-size: var(--cm-text-body);
+  color: var(--cm-text-tertiary);
+  line-height: var(--cm-leading-relaxed);
+  max-width: var(--cm-measure-hero-lead);
+  margin: 0 auto;
+}
+
+/* ——————————————————— Bottom CTA ——————————————————— */
+/* Centered intentionally — full-width CTA band */
+.ctaSection {
+  text-align: center;
+}
+
+.ctaSection h2 {
+  margin-bottom: 12px;
+}
+
+.ctaLead {
+  font-size: var(--cm-text-body);
+  color: var(--cm-text-tertiary);
+  line-height: var(--cm-leading-body);
+  max-width: var(--cm-measure-cta-lead);
+  margin: 0 auto 32px;
+}
+
+.ctaBtns {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* ——————————————————— Responsive ——————————————————— */
+@media (max-width: 940px) {
+  .hero {
+    min-height: min(92dvh, 800px);
+    padding-bottom: max(16px, env(safe-area-inset-bottom, 0px));
+  }
+
+  .heroContainer {
+    padding: 0 var(--cm-page-gutter-sm);
+  }
+
+  .heroCtaWrap {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .heroCtaWrap a {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .heroStats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .explainerGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .stepsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .benefitsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .profileGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .philBlock {
+    padding: 36px 24px;
+  }
+}
+
+@media (max-width: 560px) {
+  .heroStats {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .stepsGrid {
+    grid-template-columns: 1fr;
+  }
+}

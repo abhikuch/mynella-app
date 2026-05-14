@@ -1,0 +1,469 @@
+.lead {
+  font-size: var(--cm-text-body-lg);
+  line-height: var(--cm-leading-relaxed);
+  color: var(--cm-text-tertiary);
+  max-width: var(--cm-measure-section);
+  margin-top: 16px;
+}
+
+.leadMuted {
+  font-size: var(--cm-text-sm-body);
+  line-height: var(--cm-leading-relaxed);
+  color: var(--cm-text-muted);
+  max-width: var(--cm-measure-hero-title);
+  margin-top: 14px;
+}
+
+.leadMuted a {
+  color: var(--cm-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.leadMuted a:hover {
+  color: var(--cm-text-secondary);
+}
+
+.teamLeadCard {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 36px;
+  margin-top: 36px;
+  padding: 36px;
+  background: var(--cm-surface-1);
+  border: 1px solid var(--cm-line);
+  border-radius: var(--cm-radius-3xl);
+  border-top: 3px solid var(--cm-accent-border);
+}
+
+/* Team roster subsection (below founder) */
+.teamRosterBlock {
+  margin-top: clamp(40px, 6vw, 64px);
+  padding-top: clamp(36px, 5vw, 52px);
+  border-top: 1px solid color-mix(in srgb, var(--cm-line) 85%, transparent);
+}
+
+.teamRosterHeader {
+  max-width: min(40rem, 100%);
+  margin-bottom: clamp(24px, 4vw, 36px);
+}
+
+.teamRosterHeading {
+  font-family: var(--cm-font-display);
+  font-size: clamp(1.65rem, 3.2vw, 2.15rem);
+  font-weight: 600;
+  color: var(--cm-text-primary);
+  margin: 0 0 10px;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.teamRosterSub {
+  font-family: var(--cm-font-ui);
+  font-size: var(--cm-text-body);
+  font-weight: 500;
+  color: var(--cm-text-secondary);
+  line-height: var(--cm-leading-relaxed);
+  margin: 0 0 14px;
+  letter-spacing: -0.01em;
+}
+
+.teamRosterLead {
+  font-size: var(--cm-text-sm-body);
+  color: var(--cm-text-muted);
+  line-height: var(--cm-leading-ui);
+  margin: 0;
+}
+
+/* Colleagues: responsive card grid — full section width */
+.empGrid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 28px;
+  padding: 0;
+  width: 100%;
+}
+
+.empGridItem {
+  margin: 0;
+  min-width: 0;
+}
+
+.empCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  height: 100%;
+  margin: 0;
+  padding: 28px 22px 22px;
+  background: var(--cm-surface-1);
+  border: 1px solid var(--cm-line);
+  border-radius: var(--cm-radius-card-feature);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--cm-text-primary) 4%, transparent);
+  transition:
+    transform 0.28s var(--cm-ease-out-soft),
+    border-color 0.2s ease,
+    box-shadow 0.28s var(--cm-ease-out-soft),
+    background 0.2s ease;
+}
+
+.empCard:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--cm-accent) 35%, var(--cm-line));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--cm-accent) 12%, transparent),
+    0 18px 40px -12px rgba(0, 0, 0, 0.45);
+  background: color-mix(in srgb, var(--cm-surface-2) 92%, var(--cm-surface-1));
+}
+
+.empCard:focus-within {
+  border-color: color-mix(in srgb, var(--cm-accent) 45%, var(--cm-line));
+}
+
+.empAvatar {
+  width: 112px;
+  height: 112px;
+  margin: 0;
+  border-radius: 50%;
+  background: linear-gradient(
+    145deg,
+    var(--cm-surface-3) 0%,
+    color-mix(in srgb, var(--cm-surface-2) 70%, var(--cm-surface-3)) 100%
+  );
+  border: 2px solid color-mix(in srgb, var(--cm-line-2) 80%, var(--cm-accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.empAvatarImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.empAvatarInitials {
+  font-family: var(--cm-font-display);
+  font-size: clamp(1.35rem, 3vw, 1.65rem);
+  font-weight: 600;
+  color: var(--cm-text-secondary);
+  letter-spacing: -0.03em;
+}
+
+.empBody {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+.empName {
+  font-family: var(--cm-font-display);
+  font-size: var(--cm-text-base);
+  font-weight: 600;
+  color: var(--cm-text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.empRole {
+  font-size: var(--cm-text-xs-lg);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cm-text-muted);
+}
+
+.empRoleSoft {
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+  font-size: var(--cm-text-sm-body);
+  color: var(--cm-text-muted);
+  margin: 0 0 4px;
+}
+
+.empLinkedInRow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 12px;
+  font-size: var(--cm-text-xs-lg);
+  font-weight: 600;
+  color: var(--cm-icon-accent);
+  text-decoration: none;
+  border-top: 1px solid var(--cm-line);
+  width: 100%;
+  transition: color var(--cm-duration-fast);
+}
+
+.empLinkedInRow:hover {
+  color: var(--cm-accent);
+}
+
+.empLinkedInRow:focus-visible {
+  outline: 2px solid var(--cm-accent);
+  outline-offset: 4px;
+  border-radius: var(--cm-radius-sm);
+}
+
+.teamRosterFoot {
+  font-size: var(--cm-text-sm-body);
+  color: var(--cm-text-tertiary);
+  margin-top: clamp(20px, 3vw, 28px);
+  padding-top: 8px;
+  line-height: var(--cm-leading-ui);
+}
+
+.teamRosterFoot a {
+  color: var(--cm-accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.teamRosterFoot a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.teamRosterFootHint {
+  color: var(--cm-text-muted);
+  font-weight: 400;
+}
+
+.empLinkedInIcon {
+  display: block;
+  flex-shrink: 0;
+}
+
+.teamFnHeading {
+  font-family: var(--cm-font-display);
+  font-size: var(--cm-text-h3-ui);
+  font-weight: 600;
+  color: var(--cm-text-primary);
+  margin-top: 48px;
+  margin-bottom: 4px;
+  letter-spacing: -0.02em;
+}
+
+.teamFnGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.teamFnCard {
+  background: var(--cm-surface-1);
+  border: 1px solid var(--cm-line);
+  border-radius: var(--cm-radius-xl);
+  padding: 22px 20px;
+}
+
+.teamFnTitle {
+  font-size: var(--cm-text-sm);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cm-accent);
+  margin-bottom: 10px;
+}
+
+.teamFnDesc {
+  font-size: var(--cm-text-sm-body);
+  color: var(--cm-text-tertiary);
+  line-height: var(--cm-leading-body);
+  margin: 0;
+}
+
+.founderAvatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--cm-surface-3);
+  border: 1px solid var(--cm-line-2);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.founderAvatarImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.founderName {
+  font-family: var(--cm-font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 600;
+  color: var(--cm-text-primary);
+  margin-bottom: 6px;
+}
+
+.founderRole {
+  font-size: var(--cm-text-xs-lg);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cm-accent);
+  margin-bottom: 14px;
+}
+
+.founderCreds {
+  font-size: var(--cm-text-sm-body);
+  color: var(--cm-text-muted);
+  margin-bottom: 16px;
+  line-height: var(--cm-leading-ui);
+}
+
+.founderBody {
+  font-size: var(--cm-text-body);
+  color: var(--cm-text-secondary);
+  line-height: 1.8;
+}
+
+.founderBody p + p {
+  margin-top: 14px;
+}
+
+.credStrip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 44px;
+}
+
+.credCard {
+  background: var(--cm-ink-2);
+  border: 1px solid var(--cm-line);
+  border-radius: var(--cm-radius-xl);
+  padding: 22px 20px;
+  text-align: left;
+}
+
+.credLabel {
+  font-size: var(--cm-text-xs-lg);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cm-text-muted);
+  margin-bottom: 8px;
+}
+
+.credValue {
+  font-size: var(--cm-text-base);
+  font-weight: 600;
+  color: var(--cm-text-primary);
+  line-height: 1.4;
+}
+
+/* Centered intentionally — full-width CTA band */
+.ctaBand {
+  position: relative;
+  overflow: hidden;
+  padding: var(--cm-cta-band-y) 0;
+  text-align: center;
+  background: var(--cm-ink-2);
+  border-top: 1px solid var(--cm-line);
+}
+
+.ctaGlow {
+  position: absolute;
+  width: var(--cm-blob-w-hub-cta);
+  height: var(--cm-blob-h-hub-cta);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--cm-glow-accent-band);
+  pointer-events: none;
+}
+
+.ctaInner {
+  position: relative;
+  z-index: 2;
+  max-width: var(--cm-measure-hero-lead);
+  margin: 0 auto;
+  padding: 0 var(--cm-page-gutter-sm);
+}
+
+.ctaInner h2 {
+  margin-bottom: 14px;
+}
+
+.ctaLead {
+  font-size: var(--cm-text-body-lg);
+  color: var(--cm-text-tertiary);
+  line-height: var(--cm-leading-body);
+  margin-bottom: 28px;
+}
+
+.ctaBtns {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 1024px) {
+  .empGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (max-width: 940px) {
+  .credStrip,
+  .teamFnGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .teamLeadCard {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .founderAvatar {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .empGrid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .empCard {
+    padding: 24px 20px 22px;
+  }
+
+  .empAvatar {
+    width: 96px;
+    height: 96px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .empCard {
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .empCard:hover {
+    transform: none;
+  }
+}

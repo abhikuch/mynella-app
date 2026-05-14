@@ -1,0 +1,24 @@
+{
+  "name": "mynella-sanity-studio",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "export COLUMNS=\"${COLUMNS:-120}\"; export LINES=\"${LINES:-40}\"; node ./node_modules/sanity/bin/sanity dev --port 3333",
+    "deploy": "export COLUMNS=\"${COLUMNS:-120}\"; export LINES=\"${LINES:-40}\"; node ./node_modules/sanity/bin/sanity deploy",
+    "build": "export COLUMNS=\"${COLUMNS:-120}\"; export LINES=\"${LINES:-40}\"; node ./node_modules/sanity/bin/sanity build",
+    "seed": "export COLUMNS=\"${COLUMNS:-120}\"; export LINES=\"${LINES:-40}\"; node ./node_modules/sanity/bin/sanity exec ./scripts/seedDefaults.ts",
+    "dataset:export": "mkdir -p backups && export COLUMNS=\"${COLUMNS:-120}\"; export LINES=\"${LINES:-40}\"; node ./node_modules/sanity/bin/sanity dataset export production ./backups/production-latest.ndjson --overwrite"
+  },
+  "dependencies": {
+    "@sanity/client": "^6.28.0",
+    "@sanity/vision": "^3.68.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sanity": "^3.68.7",
+    "styled-components": "^6.1.15"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "typescript": "^5.6.3"
+  }
+}

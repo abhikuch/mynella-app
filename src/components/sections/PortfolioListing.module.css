@@ -1,0 +1,153 @@
+.header {
+  margin-bottom: 48px;
+}
+
+.header h1 {
+  margin-bottom: 12px;
+}
+
+.lead {
+  font-size: var(--cm-text-body-lg);
+  color: var(--cm-text-tertiary);
+  line-height: var(--cm-leading-relaxed);
+  max-width: var(--cm-measure-hero-lead);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.card {
+  background: var(--cm-surface-1);
+  border: 1px solid var(--cm-line);
+  border-radius: var(--cm-radius-2xl);
+  padding: 30px 28px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  transition: border-color var(--cm-duration-normal),
+              background var(--cm-duration-normal);
+}
+
+.card:hover {
+  border-color: var(--cm-line-2);
+  background: var(--cm-surface-2);
+}
+
+.cardMark {
+  margin-bottom: 4px;
+  pointer-events: none;
+}
+
+.cardBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--cm-text-xs);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--cm-text-muted);
+  margin-bottom: 16px;
+}
+
+.cardBadge::before {
+  content: "";
+  width: 12px;
+  height: 1px;
+  background: var(--cm-text-muted);
+}
+
+.cardName {
+  font-family: var(--cm-font-display);
+  font-size: var(--cm-text-h3-card);
+  font-weight: 700;
+  color: var(--cm-text-primary);
+  margin-bottom: 8px;
+}
+
+.cardTagline {
+  font-size: var(--cm-text-sm-body);
+  color: var(--cm-text-tertiary);
+  line-height: var(--cm-leading-body);
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.cardMeta {
+  display: flex;
+  gap: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--cm-line);
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.metaLabel {
+  font-size: var(--cm-text-xs-lg);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cm-text-muted);
+}
+
+.metaValue {
+  font-size: var(--cm-text-sm-body);
+  font-weight: 600;
+  color: var(--cm-text-primary);
+}
+
+.cardArrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--cm-text-sm-body);
+  font-weight: 700;
+  color: var(--cm-accent);
+  margin-top: 16px;
+}
+
+.cardArrow span {
+  transition: transform var(--cm-duration-fast);
+}
+
+.card:hover .cardArrow span {
+  transform: translateX(3px);
+}
+
+/* Family sections on main model portfolios page */
+.familySection {
+  margin-top: 64px;
+}
+
+.familyTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.familyDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cm-accent);
+}
+
+.familyTitle h3 {
+  font-size: var(--cm-text-h3-ui);
+  font-weight: 700;
+  color: var(--cm-text-primary);
+}
+
+@media (max-width: 940px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

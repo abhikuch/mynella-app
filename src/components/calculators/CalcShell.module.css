@@ -1,0 +1,120 @@
+.shell {
+  position: relative;
+  min-height: 100vh;
+  background: var(--cm-ink);
+  /* No overflow:hidden here — it clips SVG labels that overflow their viewBox.
+     Decorative layers are clipped individually via .decoClip below. */
+}
+
+/* Wrapper that clips only the background decorations */
+.decoClip {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.heroGrid {
+  position: absolute;
+  inset: 0;
+  background-image: var(--cm-hero-grid-image);
+  background-size: var(--cm-hero-grid-size) var(--cm-hero-grid-size);
+  mask-image: var(--cm-mask-hero-fade);
+  pointer-events: none;
+}
+
+.heroGlow {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--cm-blob-w-hero);
+  height: var(--cm-blob-h-hero);
+  background: var(--cm-glow-accent-mid);
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(60px);
+}
+
+.inner {
+  position: relative;
+  max-width: var(--cm-max-width);
+  margin: 0 auto;
+  padding: 40px var(--cm-page-gutter) 100px;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--cm-text-sm-body);
+  color: var(--cm-text-tertiary);
+  text-decoration: none;
+  margin-bottom: 40px;
+  transition: color var(--cm-duration-fast);
+}
+.back:hover { color: var(--cm-accent); }
+
+.header {
+  margin-bottom: 48px;
+}
+
+.tagline {
+  font-size: var(--cm-text-xs-lg);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cm-accent);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-family: var(--cm-font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: var(--cm-leading-snug);
+  color: var(--cm-text-primary);
+}
+
+.body {
+  /* children fill this */
+}
+
+.disclaimer {
+  margin-top: 56px;
+  padding-top: 20px;
+  border-top: 1px solid var(--cm-line);
+  font-size: var(--cm-text-sm);
+  color: var(--cm-text-muted);
+  line-height: var(--cm-leading-ui);
+  max-width: var(--cm-prose-max);
+}
+
+/* Mobile / narrow viewports only — desktop (≥720px) uses default spacing above */
+@media (max-width: 719px) {
+  .inner {
+    padding-top: 28px;
+    padding-bottom: max(72px, env(safe-area-inset-bottom, 0px));
+    padding-left: max(var(--cm-page-gutter), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--cm-page-gutter), env(safe-area-inset-right, 0px));
+  }
+
+  .back {
+    margin-bottom: 28px;
+  }
+
+  .header {
+    margin-bottom: 32px;
+  }
+
+  .disclaimer {
+    margin-top: 40px;
+    padding-top: 16px;
+  }
+
+  /* Let wide charts/tables shrink inside flex/grid without forcing horizontal page scroll */
+  .body {
+    min-width: 0;
+    max-width: 100%;
+  }
+}

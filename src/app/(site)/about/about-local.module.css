@@ -1,0 +1,29 @@
+.h2 {
+  font-family: var(--cm-font-display);
+  font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+  font-weight: 600;
+  color: var(--cm-text-primary);
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.02em;
+  line-height: var(--cm-leading-snug);
+}
+
+.p {
+  font-family: var(--cm-font-ui);
+  font-size: var(--cm-text-body);
+  line-height: var(--cm-leading-body);
+  color: var(--cm-text-tertiary);
+  margin: 0 0 0.75rem;
+  max-width: min(40rem, 100%);
+}
+
+.link {
+  color: var(--cm-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 600;
+}
+
+.link:hover {
+  color: var(--cm-text-primary);
+}

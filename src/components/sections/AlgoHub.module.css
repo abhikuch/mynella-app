@@ -1,0 +1,214 @@
+.lead {
+  font-size: var(--cm-text-body-lg);
+  line-height: var(--cm-leading-relaxed);
+  color: var(--cm-text-tertiary);
+  max-width: var(--cm-measure-section-wide);
+  margin-top: 16px;
+}
+
+.algoHeroMark {
+  display: block;
+  margin-bottom: 22px;
+  max-height: 56px;
+  width: fit-content;
+}
+
+.algoHeroMark img {
+  max-height: 56px;
+  width: auto;
+  height: auto;
+}
+
+.philosophy {
+  max-width: min(var(--cm-prose-max), 100%);
+  margin: 0;
+  text-align: left;
+}
+
+.philosophy blockquote {
+  font-family: var(--cm-font-display);
+  font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--cm-text-secondary);
+  line-height: 1.45;
+  margin: 0 0 16px;
+}
+
+.philosophy cite {
+  font-size: var(--cm-text-sm-body);
+  font-style: normal;
+  color: var(--cm-text-muted);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 44px;
+}
+
+.card {
+  background: var(--cm-surface-1);
+  border: 1px solid var(--cm-line);
+  border-radius: var(--cm-radius-2xl);
+  padding: 28px 22px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  transition:
+    border-color var(--cm-duration-micro) var(--cm-ease-micro),
+    background var(--cm-duration-micro) var(--cm-ease-micro),
+    transform var(--cm-duration-micro) var(--cm-ease-micro),
+    box-shadow var(--cm-duration-micro) var(--cm-ease-micro);
+}
+
+@media (hover: hover) {
+  .card:hover {
+    border-color: var(--cm-line-3);
+    background: var(--cm-surface-2);
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--cm-shadow-elevated);
+  }
+}
+
+.cardTag {
+  font-size: var(--cm-text-xs-lg);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cm-accent);
+  margin-bottom: 10px;
+}
+
+.cardTitle {
+  font-family: var(--cm-font-display);
+  font-size: var(--cm-text-h3-card);
+  font-weight: 700;
+  color: var(--cm-text-primary);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.cardDesc {
+  font-size: var(--cm-text-sm-body);
+  color: var(--cm-text-tertiary);
+  line-height: var(--cm-leading-body);
+  flex: 1;
+  margin-bottom: 18px;
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin-bottom: 20px;
+  font-size: var(--cm-text-xs-lg);
+  color: var(--cm-text-muted);
+}
+
+.metaRow span strong {
+  color: var(--cm-text-secondary);
+  font-weight: 600;
+}
+
+.ladder {
+  margin-top: 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ladderRow {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 24px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--cm-line);
+  align-items: start;
+}
+
+.ladderRow:first-child {
+  padding-top: 0;
+}
+
+.ladderCap {
+  font-size: var(--cm-text-xs-lg);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cm-accent);
+}
+
+.ladderBody h3 {
+  font-size: var(--cm-text-h4);
+  font-weight: 700;
+  color: var(--cm-text-primary);
+  margin-bottom: 8px;
+}
+
+.ladderBody p {
+  font-size: var(--cm-text-sm-body);
+  color: var(--cm-text-tertiary);
+  line-height: var(--cm-leading-body);
+  margin: 0;
+}
+
+/* Centered intentionally — full-width CTA band */
+.ctaBand {
+  position: relative;
+  padding: var(--cm-cta-band-y) 0;
+  text-align: center;
+  overflow: hidden;
+  background: var(--cm-ink-2);
+  border-top: 1px solid var(--cm-line);
+}
+
+.ctaGlow {
+  position: absolute;
+  width: var(--cm-blob-w-hub-cta);
+  height: var(--cm-blob-h-hub-cta);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--cm-glow-accent-strong);
+  pointer-events: none;
+}
+
+.ctaInner {
+  position: relative;
+  z-index: 2;
+  max-width: var(--cm-measure-cta-inner-md);
+  margin: 0 auto;
+  padding: 0 var(--cm-page-gutter-sm);
+}
+
+.ctaLead {
+  font-size: var(--cm-text-body-lg);
+  color: var(--cm-text-tertiary);
+  margin: 14px 0 26px;
+  line-height: var(--cm-leading-body);
+}
+
+.ctaBtns {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 940px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .ladderRow {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}

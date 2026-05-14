@@ -1,0 +1,340 @@
+/**
+ * Clearmind design tokens — extracted from clearmind-v4.html
+ * Import once at app root; pair with DESIGN.md for usage rules.
+ *
+ * Template rule: avoid one-off px/hex/rgba in modules — use tokens here for
+ * breakpoints, hero shells, content measures, glows, status/chart colors,
+ * line-heights, and elevation. Page CSS should only reference `--cm-*`.
+ */
+
+:root {
+  color-scheme: dark;
+
+  /* Logo mark (SVG fills) — dark shell + near-black C on dark UI */
+  --cm-logo-shell: #ffffff;
+  --cm-logo-mark: #08090b;
+
+  /* Surfaces — dark stack */
+  --cm-ink: #08090b;
+  --cm-ink-2: #0d0f12;
+  --cm-ink-3: #111316;
+  --cm-surface-1: #171a1e;
+  --cm-surface-2: #1c1f24;
+  --cm-surface-3: #21252b;
+
+  /* Hairlines & borders */
+  --cm-line: rgba(255, 255, 255, 0.055);
+  --cm-line-2: rgba(255, 255, 255, 0.1);
+  --cm-line-3: rgba(255, 255, 255, 0.16);
+
+  /*
+   * Text — contrast tuned for WCAG 2.1 AA (~4.5:1) on elevated surfaces
+   * (--cm-surface-1 … --cm-surface-3), not only on --cm-ink. Muted/tertiary
+   * were previously too dim on cards (#171a1e+).
+   */
+  --cm-text-primary: #f2f3f5;
+  --cm-text-secondary: #d2d6de;
+  --cm-text-tertiary: #aeb6c2;
+  --cm-text-muted: #939dad;
+
+  /* Accent — profit / positive green (single marketing accent) */
+  --cm-accent: #22c55e;
+  --cm-accent-muted: rgba(34, 197, 94, 0.12);
+  --cm-accent-border: rgba(34, 197, 94, 0.28);
+  --cm-accent-border-strong: rgba(34, 197, 94, 0.22);
+
+  /* Typography stacks — wired to next/font CSS variables for self-hosting */
+  --cm-font-display: var(--font-playfair), serif;
+  --cm-font-ui: var(--font-inter), system-ui, sans-serif;
+
+  /*
+   * Type scale — rem-based for accessibility (respects user font-size prefs).
+   * Bumped +1px across small-to-body sizes for dark-theme readability.
+   *   0.625rem = 10px | 0.6875rem = 11px | 0.75rem  = 12px
+   *   0.8125rem = 13px | 0.875rem  = 14px | 0.9375rem = 15px
+   *   1rem     = 16px | 1.0625rem = 17px | 1.125rem  = 18px
+   *   1.25rem  = 20px | 1.5rem    = 24px | 2.25rem   = 36px
+   */
+  --cm-text-2xs: 0.625rem;     /* 10px — logo tagline only */
+  --cm-text-xs: 0.6875rem;     /* 11px — tier labels, smallest UI */
+  --cm-text-xs-lg: 0.75rem;    /* 12px — eyebrows, marquee, overlines */
+  --cm-text-sm: 0.8125rem;     /* 13px — captions, meta, social icons, avatars */
+  --cm-text-sm-body: 0.875rem; /* 14px — nav items, card descriptions, small buttons */
+  --cm-text-base: 0.9375rem;   /* 15px — buttons, subheadings, form labels */
+  --cm-text-body: 1rem;        /* 16px — body copy default */
+  --cm-text-body-lg: 1.125rem; /* 18px — lead paragraphs */
+  --cm-text-h4: 1.0625rem;    /* 17px — card titles, feature headings */
+  --cm-text-h3-ui: 1.25rem;   /* 20px — section h3 */
+  --cm-text-h3-card: 1.5rem;  /* 24px — product card titles */
+  --cm-text-stat: 2.25rem;    /* 36px — hero stat numbers */
+
+  /*
+   * Alignment: section copy (eyebrows, H2, leads, cards) is left-aligned site-wide.
+   * Reserve text-align: center for: bottom CTA bands, KPI/stat tiles, chart axis
+   * labels, and logo-stack cells — not for long-form reading.
+   */
+  /* Layout — single content width; nav/sections/hero must all match */
+  --cm-max-width: 1180px;
+  --cm-page-gutter: clamp(20px, 4vw, 44px);
+  --cm-page-gutter-sm: 20px;
+  /* 12-col rhythm: section shells use column-gap; card grids use same for alignment */
+  --cm-grid-columns: 12;
+  --cm-grid-gutter: 24px;
+  --cm-grid-gutter-sm: 16px;
+  /* Readable measure for body / leads (left-aligned to grid, not centered) */
+  --cm-prose-max: 40rem;
+  --cm-prose-wide: min(52rem, 100%);
+  --cm-nav-height: 60px;
+  /** Optional thin utility strip above main nav (when CMS header links exist) */
+  --cm-nav-utility: 34px;
+  --cm-section-y: 96px;
+  --cm-section-y-sm: 64px;
+
+  /* Radius */
+  --cm-radius-sm: 4px;
+  --cm-radius-md: 7px;
+  --cm-radius-lg: 8px;
+  --cm-radius-xl: 11px;
+  --cm-radius-2xl: 12px;
+  --cm-radius-3xl: 14px;
+  --cm-radius-card-feature: 16px;
+  --cm-radius-pill: 100px;
+
+  /* Motion */
+  --cm-ease-default: ease;
+  --cm-duration-fast: 0.18s;
+  --cm-duration-normal: 0.2s;
+  --cm-duration-slow: 0.36s;
+  --cm-duration-reveal: 0.6s;
+  /** Short UI feedback — buttons, icons, accordions (GPU-friendly transforms) */
+  --cm-duration-micro: 0.15s;
+  --cm-ease-micro: cubic-bezier(0.22, 1, 0.36, 1);
+  --cm-ease-out-soft: cubic-bezier(0.33, 1, 0.68, 1);
+
+  /* Nav glass */
+  --cm-nav-bg: rgba(8, 9, 11, 0.94);
+  --cm-blur-nav: blur(22px) saturate(1.4);
+
+  /* Shadows */
+  --cm-shadow-dropdown: 0 24px 56px rgba(0, 0, 0, 0.6);
+  --cm-shadow-card-hover: 0 18px 48px rgba(0, 0, 0, 0.2);
+  --cm-shadow-elevated: 0 16px 40px rgba(0, 0, 0, 0.22);
+
+  /* Breakpoints — reference values for JS/docs. In @media use literal 940px / 640px / 560px (var() in media queries is ignored by Chromium). */
+  --cm-bp-lg: 940px;
+  --cm-bp-md: 640px;
+  --cm-bp-sm: 560px;
+
+  /*
+   * Marketing hero shell — grid, vignette, glow (product/report/hub pages).
+   * Modules keep layout (inset, heroGlow position); only the paint values are tokenized.
+   */
+  --cm-grid-line-faint: rgba(255, 255, 255, 0.016);
+  --cm-hero-grid-image:
+    linear-gradient(var(--cm-grid-line-faint) 1px, transparent 1px),
+    linear-gradient(90deg, var(--cm-grid-line-faint) 1px, transparent 1px);
+  --cm-hero-grid-size: 80px;
+  --cm-mask-hero-fade: radial-gradient(ellipse 75% 75% at 50% 45%, black 15%, transparent 100%);
+
+  /* Radial accent glows (hero blobs, CTA strips, conclusion) */
+  --cm-glow-accent-weak: radial-gradient(ellipse, rgba(34, 197, 94, 0.05) 0%, transparent 65%);
+  --cm-glow-accent-mid: radial-gradient(ellipse, rgba(34, 197, 94, 0.06) 0%, transparent 65%);
+  --cm-glow-accent-strong: radial-gradient(ellipse, rgba(34, 197, 94, 0.07) 0%, transparent 70%);
+  --cm-glow-accent-cta: radial-gradient(ellipse, rgba(34, 197, 94, 0.055) 0%, transparent 65%);
+  --cm-glow-accent-band: radial-gradient(ellipse, rgba(34, 197, 94, 0.08) 0%, transparent 70%);
+  --cm-glow-key-message: radial-gradient(ellipse at 50% 0%, rgba(34, 197, 94, 0.08), transparent 60%);
+  --cm-glow-conclusion: radial-gradient(ellipse, rgba(34, 197, 94, 0.08), transparent 65%);
+
+  /* Pills / chips / badges on dark surfaces */
+  --cm-pill-bg: rgba(255, 255, 255, 0.03);
+  --cm-chip-bg: rgba(255, 255, 255, 0.04);
+
+  /* Accent-tinted surfaces (rows, placeholders) */
+  --cm-accent-surface-faint: rgba(34, 197, 94, 0.03);
+  --cm-accent-surface-subtle: rgba(34, 197, 94, 0.04);
+  --cm-accent-surface-soft: rgba(34, 197, 94, 0.05);
+  --cm-accent-surface-mid: rgba(34, 197, 94, 0.07);
+
+  /* Status + data visualization (charts, performance report) */
+  --cm-negative: #f87171;
+  --cm-negative-strong: #ef4444;
+  --cm-negative-muted: rgba(248, 113, 113, 0.12);
+  --cm-negative-border: rgba(248, 113, 113, 0.25);
+  --cm-chart-positive: #4ade80;
+  --cm-chart-positive-muted: rgba(74, 222, 128, 0.12);
+  --cm-chart-positive-border: rgba(74, 222, 128, 0.25);
+  --cm-chart-accent-alt: #a3e635;
+  --cm-accent-mid: #34d674;
+
+  /*
+   * Icons — stroke/fill via currentColor where used.
+   * Light theme overrides with deeper hues for contrast on pale surfaces.
+   */
+  --cm-icon-accent: var(--cm-accent);
+  --cm-icon-positive: var(--cm-chart-positive);
+  --cm-icon-muted: var(--cm-text-tertiary);
+  --cm-icon-nav: var(--cm-text-tertiary);
+
+  /*
+   * Content width caps (rem-based; min(..., 100%) for narrow viewports).
+   * Use for headlines, leads, hub intros, CTA copy blocks — not global max-width.
+   */
+  --cm-measure-hero-title-lg: min(47.5rem, 100%);
+  --cm-measure-hero-title: min(45rem, 100%);
+  --cm-measure-hero-lead: min(35rem, 100%);
+  --cm-measure-hero-lead-wide: min(36.25rem, 100%);
+  --cm-measure-section: min(40rem, 100%);
+  --cm-measure-section-wide: min(42.5rem, 100%);
+  --cm-measure-cta-band-inner: min(36.25rem, 100%);
+  /* Hub / strip CTAs: slightly wider copy block than global CTA lead */
+  --cm-measure-cta-inner-md: min(33.75rem, 100%);
+  --cm-measure-cta-lead: min(32.5rem, 100%);
+  --cm-measure-narrow: min(30rem, 100%);
+  --cm-measure-aside: min(26.25rem, 100%);
+  --cm-measure-grid-cards: min(52.5rem, 100%);
+  --cm-measure-bar-column: 10rem;
+  --cm-measure-footer-brand: 15.625rem;
+  /* Partner logo cells (home marquee) */
+  --cm-partner-logo-max-lg: 168px;
+  --cm-partner-logo-max: 148px;
+  --cm-partner-logo-max-sm: 132px;
+
+  /* Section / CTA vertical rhythm */
+  --cm-cta-band-y: 88px;
+  --cm-cta-global-y: 120px;
+  --cm-cta-global-y-md: 80px;
+
+  /* Line-height presets (pair with type tokens) */
+  --cm-leading-snug: 1.12;
+  --cm-leading-ui: 1.65;
+  --cm-leading-body: 1.7;
+  --cm-leading-relaxed: 1.75;
+  --cm-leading-prose: 1.8;
+
+  /* Hero min-heights */
+  --cm-hero-min-home: 100vh;
+  --cm-hero-min-product: 80vh;
+  --cm-hero-min-report: 78vh;
+  --cm-hero-min-marketing: 72vh;
+
+  /* Decorative blob geometry (hero glow layers) */
+  --cm-blob-w-hero: 700px;
+  --cm-blob-h-hero: 500px;
+  --cm-blob-w-marketing: 640px;
+  --cm-blob-h-marketing: 480px;
+  --cm-blob-w-compact: 560px;
+  --cm-blob-w-cta: 600px;
+  --cm-blob-h-cta: 350px;
+  /* Centered glow behind hub / about CTA bands */
+  --cm-blob-w-hub-cta: 480px;
+  --cm-blob-h-hub-cta: 360px;
+
+  /* Minimum tap target (WCAG 2.5.5 — reference for nav / controls) */
+  --cm-touch-min: 44px;
+}
+
+/*
+ * Phone / tablet — tighter vertical rhythm, dynamic viewport heroes, readable gutters.
+ * Desktop values remain in :root above; laptop layout is unchanged above 940px.
+ */
+@media (max-width: 940px) {
+  :root {
+    --cm-section-y: 80px;
+    --cm-section-y-sm: 56px;
+    --cm-cta-global-y-md: 72px;
+    --cm-hero-min-home: min(100dvh, 920px);
+    --cm-hero-min-product: min(92dvh, 800px);
+    --cm-hero-min-report: min(82dvh, 740px);
+    --cm-hero-min-marketing: min(88dvh, 720px);
+  }
+}
+
+@media (max-width: 400px) {
+  :root {
+    --cm-page-gutter-sm: 16px;
+  }
+}
+
+/*
+ * Light theme — set on <html data-theme="light"> via ThemeScript + footer toggle.
+ * Mirrors dark semantic roles so modules using --cm-* switch without one-off hex.
+ */
+html[data-theme="light"] {
+  color-scheme: light;
+
+  --cm-logo-shell: #0f1218;
+  --cm-logo-mark: #f4f5f7;
+
+  --cm-ink: #f4f5f7;
+  --cm-ink-2: #eceef2;
+  --cm-ink-3: #e4e7ec;
+  --cm-surface-1: #ffffff;
+  --cm-surface-2: #f3f4f6;
+  --cm-surface-3: #e8eaef;
+
+  --cm-line: rgba(15, 18, 24, 0.08);
+  --cm-line-2: rgba(15, 18, 24, 0.12);
+  --cm-line-3: rgba(15, 18, 24, 0.18);
+
+  /* Light: darken secondary labels for ≥4.5:1 on white / surface-1 */
+  --cm-text-primary: #0f1218;
+  --cm-text-secondary: #2c3340;
+  --cm-text-tertiary: #3d4654;
+  --cm-text-muted: #5a6372;
+
+  --cm-accent-muted: rgba(34, 197, 94, 0.14);
+  --cm-accent-border: rgba(22, 163, 74, 0.35);
+  --cm-accent-border-strong: rgba(22, 163, 74, 0.28);
+
+  --cm-nav-bg: rgba(244, 245, 247, 0.92);
+  --cm-blur-nav: blur(20px) saturate(1.2);
+
+  --cm-shadow-dropdown: 0 24px 56px rgba(15, 18, 24, 0.12);
+  --cm-shadow-card-hover: 0 18px 48px rgba(15, 18, 24, 0.08);
+  --cm-shadow-elevated: 0 16px 40px rgba(15, 18, 24, 0.1);
+
+  --cm-grid-line-faint: rgba(15, 18, 24, 0.045);
+  --cm-hero-grid-image:
+    linear-gradient(var(--cm-grid-line-faint) 1px, transparent 1px),
+    linear-gradient(90deg, var(--cm-grid-line-faint) 1px, transparent 1px);
+
+  --cm-glow-accent-weak: radial-gradient(ellipse, rgba(34, 197, 94, 0.09) 0%, transparent 65%);
+  --cm-glow-accent-mid: radial-gradient(ellipse, rgba(34, 197, 94, 0.1) 0%, transparent 65%);
+  --cm-glow-accent-strong: radial-gradient(ellipse, rgba(34, 197, 94, 0.11) 0%, transparent 70%);
+  --cm-glow-accent-cta: radial-gradient(ellipse, rgba(34, 197, 94, 0.09) 0%, transparent 65%);
+  --cm-glow-accent-band: radial-gradient(ellipse, rgba(34, 197, 94, 0.12) 0%, transparent 70%);
+  --cm-glow-key-message: radial-gradient(ellipse at 50% 0%, rgba(34, 197, 94, 0.1), transparent 60%);
+  --cm-glow-conclusion: radial-gradient(ellipse, rgba(34, 197, 94, 0.1), transparent 65%);
+
+  --cm-pill-bg: rgba(15, 18, 24, 0.05);
+  --cm-chip-bg: rgba(15, 18, 24, 0.06);
+
+  --cm-accent-surface-faint: rgba(34, 197, 94, 0.06);
+  --cm-accent-surface-subtle: rgba(34, 197, 94, 0.08);
+  --cm-accent-surface-soft: rgba(34, 197, 94, 0.09);
+  --cm-accent-surface-mid: rgba(34, 197, 94, 0.11);
+
+  --cm-icon-accent: #0f6b3d;
+  --cm-icon-positive: #15803d;
+  --cm-icon-muted: #4b5566;
+  --cm-icon-nav: #525b6a;
+}
+
+/* Aliases matching original :root names for drop-in parity with prototype */
+:root[data-clearmind-compat] {
+  --ink: var(--cm-ink);
+  --ink2: var(--cm-ink-2);
+  --ink3: var(--cm-ink-3);
+  --s1: var(--cm-surface-1);
+  --s2: var(--cm-surface-2);
+  --s3: var(--cm-surface-3);
+  --ln: var(--cm-line);
+  --ln2: var(--cm-line-2);
+  --ln3: var(--cm-line-3);
+  --w1: var(--cm-text-primary);
+  --w2: var(--cm-text-secondary);
+  --w3: var(--cm-text-tertiary);
+  --w4: var(--cm-text-muted);
+  --g: var(--cm-accent);
+  --gd: var(--cm-accent-muted);
+}

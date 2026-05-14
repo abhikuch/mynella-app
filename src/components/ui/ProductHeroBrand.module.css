@@ -1,0 +1,88 @@
+.heroBrand {
+  display: block;
+  margin-bottom: 22px;
+  max-height: 72px;
+  width: fit-content;
+}
+
+.heroBrand img {
+  max-height: 72px;
+  width: auto;
+  height: auto;
+}
+
+.cardBrand {
+  display: block;
+  margin-bottom: 14px;
+  max-height: 52px;
+  width: fit-content;
+}
+
+.cardBrand img {
+  max-height: 52px;
+  width: auto;
+  height: auto;
+}
+
+.polarisFeatureBrand {
+  display: block;
+  margin-bottom: 16px;
+  max-height: 56px;
+  width: fit-content;
+}
+
+.polarisFeatureBrand img {
+  max-height: 56px;
+  width: auto;
+  height: auto;
+}
+
+.withTitle {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 2.5vw, 20px);
+  margin-bottom: 18px;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.withTitleHero {
+  margin-bottom: 14px;
+}
+
+.withTitleInner {
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.withTitle .withTitleInner img,
+.withTitle .heroBrand img {
+  max-height: 64px;
+}
+
+.withTitle .polarisFeatureBrand img {
+  max-height: 56px;
+}
+
+.titleLabel {
+  font-family: var(--cm-font-display);
+  font-size: clamp(1.2rem, 2.4vw, 1.65rem);
+  font-weight: 600;
+  color: var(--cm-text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.withTitleCard {
+  margin-bottom: 12px;
+  gap: 10px;
+}
+
+.withTitleCard .cardBrand img,
+.withTitleCard .withTitleInner img {
+  max-height: 48px;
+}
+
+.titleLabelCard {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+}

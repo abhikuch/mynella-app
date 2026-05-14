@@ -1,21 +1,20 @@
-# Local env (never commit secrets)
-.env
-.env.local
-.env.*.local
-sanity/.env
-
-# Dependencies / build (when Next.js app exists)
-node_modules/
+.cursor/
 .next/
+node_modules/
 out/
-dist/
-
-# Vercel
-.vercel
-
-# OS / editor
+*.tsbuildinfo
+next-env.d.ts
 .DS_Store
-*.log
-
-# Cursor local hook state (avoid machine-specific noise in git)
-.cursor/hooks/state/
+.env
+.env*.local
+sanity/node_modules/
+sanity/.sanity/
+sanity/dist/
+# Regenerated if you opt into Sanity TypeGen locally
+sanity/schema.json
+src/sanity/sanity.types.ts
+.vercel
+# Local Sanity dataset exports (`npm run pull:sanity`)
+sanity/backups/*.ndjson
+sanity-backup-*.ndjson
+image/

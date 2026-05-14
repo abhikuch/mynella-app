@@ -1,0 +1,64 @@
+/* Centered on purpose: terminal conversion strip (exception to site-wide left copy) */
+.cta {
+  background: var(--cm-ink-2);
+  text-align: center;
+  padding: var(--cm-cta-global-y) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.glow {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  width: var(--cm-blob-w-cta);
+  height: var(--cm-blob-h-cta);
+  pointer-events: none;
+  background: var(--cm-glow-accent-cta);
+}
+
+.container {
+  max-width: var(--cm-max-width);
+  margin: 0 auto;
+  padding: 0 var(--cm-page-gutter);
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  max-width: var(--cm-measure-cta-band-inner);
+  margin: 0 auto;
+}
+
+.inner h2 {
+  margin-bottom: 18px;
+}
+
+.lead {
+  font-size: var(--cm-text-body-lg);
+  line-height: var(--cm-leading-relaxed);
+  color: var(--cm-text-tertiary);
+  margin-bottom: 40px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+@media (max-width: 940px) {
+  .cta {
+    padding: var(--cm-cta-global-y-md) 0;
+  }
+
+  .container {
+    padding: 0 var(--cm-page-gutter-sm);
+  }
+
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}

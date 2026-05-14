@@ -1,0 +1,98 @@
+import { defineField, defineType } from "sanity";
+
+export const contactPage = defineType({
+  name: "contactPage",
+  title: "Contact page",
+  type: "document",
+  preview: { prepare: () => ({ title: "Contact page" }) },
+  fields: [
+    defineField({
+      name: "eyebrow",
+      title: "Eyebrow",
+      type: "string",
+      initialValue: "Get in touch",
+    }),
+    defineField({
+      name: "headline",
+      title: "Headline",
+      type: "string",
+    }),
+    defineField({
+      name: "subtext",
+      title: "Subtext",
+      type: "text",
+      rows: 3,
+    }),
+    defineField({
+      name: "bookCallTitle",
+      title: "Book a call — title",
+      type: "string",
+      initialValue: "Book a Call",
+    }),
+    defineField({
+      name: "bookCallLead",
+      title: "Book a call — text",
+      type: "text",
+      rows: 2,
+    }),
+    defineField({ name: "bookCallButtonLabel", type: "string", initialValue: "Book on Cal.com" }),
+    defineField({
+      name: "bookCallUrl",
+      title: "Book a call URL",
+      type: "url",
+      description: "Leave empty to use the global Cal.com link from Site chrome.",
+    }),
+    defineField({ name: "contactBlockTitle", type: "string", initialValue: "Contact" }),
+    defineField({ name: "phone", type: "string" }),
+    defineField({ name: "email", type: "string" }),
+    defineField({ name: "websiteLabel", type: "string", initialValue: "www.iamclearmind.com" }),
+    defineField({ name: "websiteUrl", type: "url" }),
+    defineField({ name: "officeTitle", type: "string", initialValue: "Office" }),
+    defineField({ name: "officeAddress", type: "text", rows: 3 }),
+    defineField({ name: "followTitle", type: "string", initialValue: "Follow Us" }),
+    defineField({
+      name: "productOptions",
+      title: "“I’m interested in” options",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            defineField({ name: "label", type: "string", validation: (r) => r.required() }),
+            defineField({ name: "value", type: "string", validation: (r) => r.required() }),
+          ],
+          preview: { select: { t: "label" }, prepare: ({ t }) => ({ title: t }) },
+        },
+      ],
+    }),
+    defineField({ name: "formSubmitLabel", type: "string", initialValue: "Send Message" }),
+    defineField({ name: "placeholderFirstName", type: "string", initialValue: "Rahul" }),
+    defineField({ name: "placeholderLastName", type: "string", initialValue: "Sharma" }),
+    defineField({ name: "placeholderPhone", type: "string", initialValue: "+91 98765 43210" }),
+    defineField({ name: "placeholderEmail", type: "string", initialValue: "rahul@example.com" }),
+    defineField({
+      name: "placeholderProduct",
+      type: "string",
+      initialValue: "Select a product",
+    }),
+    defineField({
+      name: "placeholderMessage",
+      type: "string",
+      initialValue: "Tell us about your investment goals…",
+    }),
+    defineField({
+      name: "mailtoEmail",
+      title: "Form mail-to address",
+      type: "string",
+      description: "Inquiry emails are composed to this address (mailto).",
+      initialValue: "admin@iamclearmind.com",
+    }),
+    defineField({ name: "partnershipText", type: "text", rows: 3 }),
+    defineField({ name: "partnershipLinkLabel", type: "string" }),
+    defineField({ name: "partnershipLinkUrl", type: "url" }),
+    defineField({ name: "investorPortalLead", type: "string" }),
+    defineField({ name: "investorPortalLinkLabel", type: "string" }),
+    defineField({ name: "investorPortalUrl", type: "url" }),
+    defineField({ name: "regulatoryNote", type: "text", rows: 4 }),
+  ],
+});

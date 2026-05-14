@@ -1,0 +1,32 @@
+.wrap {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+  position: relative;
+}
+
+.layerDark,
+.layerLight {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.layerLight {
+  display: none;
+}
+
+:global(html[data-theme="light"]) .layerLight {
+  display: inline-flex;
+}
+
+:global(html[data-theme="light"]) .layerDark {
+  display: none;
+}
+
+.img {
+  object-fit: contain;
+  height: auto;
+  max-width: 100%;
+  display: block;
+}

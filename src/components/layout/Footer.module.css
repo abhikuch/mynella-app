@@ -1,0 +1,291 @@
+.footer {
+  background: var(--cm-ink);
+  border-top: 1px solid var(--cm-line);
+  padding: clamp(80px, 11vw, 112px) 0 clamp(52px, 7vw, 80px);
+  transition: background var(--cm-duration-normal) var(--cm-ease-out-soft);
+}
+
+.container {
+  max-width: var(--cm-max-width);
+  margin: 0 auto;
+  padding: 0 var(--cm-page-gutter);
+}
+
+.grid {
+  display: grid;
+  /**
+   * `--footer-grid-columns` is set inline from Footer.tsx so the column count adapts
+   * to which optional columns the CMS has enabled. Using a custom property here (instead
+   * of `style={{ gridTemplateColumns }}`) means the responsive overrides below still win
+   * on tablet and mobile — inline `grid-template-columns` would otherwise block them.
+   */
+  grid-template-columns: var(
+    --footer-grid-columns,
+    1.35fr 1fr 1fr 1fr minmax(200px, 1.05fr)
+  );
+  gap: clamp(36px, 4vw, 52px) clamp(32px, 3.5vw, 44px);
+  margin-bottom: clamp(40px, 5vw, 56px);
+}
+
+.grid > * {
+  min-width: 0;
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.brandDesc {
+  font-size: var(--cm-text-sm-body);
+  color: var(--cm-text-muted);
+  line-height: 1.85;
+  margin-top: 18px;
+  max-width: var(--cm-measure-footer-brand);
+}
+
+.sebi {
+  align-self: flex-start;
+  width: fit-content;
+  max-width: 100%;
+  background: var(--cm-ink-2);
+  border: 1px solid var(--cm-line);
+  border-radius: var(--cm-radius-lg);
+  padding: 14px 18px;
+  margin-top: 20px;
+  transition:
+    background var(--cm-duration-fast) var(--cm-ease-out-soft),
+    border-color var(--cm-duration-fast) var(--cm-ease-out-soft);
+}
+
+.sebi p {
+  font-size: var(--cm-text-xs-lg);
+  color: var(--cm-text-muted);
+  line-height: 2;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Columns */
+.colTitle {
+  font-size: var(--cm-text-xs-lg);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cm-text-muted);
+  margin-bottom: 18px;
+  padding-bottom: 2px;
+}
+
+.colList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.colList a {
+  font-size: var(--cm-text-sm-body);
+  color: var(--cm-text-tertiary);
+  text-decoration: none;
+  transition:
+    color var(--cm-duration-fast) var(--cm-ease-out-soft),
+    transform var(--cm-duration-fast) var(--cm-ease-out-soft);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .colList a:hover {
+    color: var(--cm-text-primary);
+    transform: translateX(2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .colList a:hover {
+    color: var(--cm-text-primary);
+  }
+}
+
+.subList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-left: 12px;
+  margin-top: 6px;
+}
+
+.subList a {
+  font-size: var(--cm-text-sm);
+  color: var(--cm-text-muted);
+  text-decoration: none;
+  transition:
+    color var(--cm-duration-micro) var(--cm-ease-micro),
+    transform var(--cm-duration-micro) var(--cm-ease-micro);
+}
+
+.subList a:hover {
+  color: var(--cm-text-tertiary);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .subList a:hover {
+    transform: translateX(2px);
+  }
+}
+
+/* Disclaimer */
+.disclaimer {
+  background: var(--cm-ink-2);
+  border: 1px solid var(--cm-line);
+  border-radius: var(--cm-radius-lg);
+  padding: 18px 22px;
+  margin-bottom: 22px;
+}
+
+.disclaimer p {
+  font-size: var(--cm-text-xs-lg);
+  color: var(--cm-text-muted);
+  line-height: 1.8;
+}
+
+.disclaimer strong {
+  color: var(--cm-text-tertiary);
+}
+
+/* Bottom */
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-top: 32px;
+  border-top: 1px solid var(--cm-line);
+}
+
+.bottomEnd {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.bottom p {
+  font-size: var(--cm-text-xs-lg);
+  color: var(--cm-text-muted);
+}
+
+.socialRow {
+  display: flex;
+  gap: 10px;
+}
+
+.social {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--cm-line-2);
+  border-radius: var(--cm-radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cm-icon-muted);
+  text-decoration: none;
+  transition:
+    border-color var(--cm-duration-fast) var(--cm-ease-out-soft),
+    color var(--cm-duration-fast) var(--cm-ease-out-soft),
+    transform var(--cm-duration-fast) var(--cm-ease-out-soft);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .social:hover {
+    border-color: var(--cm-line-3);
+    color: var(--cm-text-primary);
+    transform: translateY(-2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .social:hover {
+    border-color: var(--cm-line-3);
+    color: var(--cm-text-primary);
+  }
+}
+
+/* Responsive */
+@media (max-width: 940px) {
+  .container {
+    padding: 0 var(--cm-page-gutter-sm);
+  }
+
+  .grid {
+    /* Override the inline custom property at tablet so we collapse to two columns. */
+    grid-template-columns: 1fr 1fr;
+    gap: 36px 28px;
+  }
+
+  .bottom {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .bottomEnd {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 560px) {
+  .grid {
+    /* Override the inline custom property at mobile so we stack into a single column. */
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .footer {
+    padding-bottom: max(52px, calc(52px + env(safe-area-inset-bottom, 0px)));
+  }
+}
+
+.newsletterBand {
+  margin-top: clamp(8px, 2vw, 16px);
+  margin-bottom: clamp(36px, 5vw, 52px);
+  padding: clamp(36px, 4.5vw, 52px) 0;
+  border-top: 1px solid var(--cm-line);
+}
+
+.newsletterBandInner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 48px);
+  align-items: start;
+  min-width: 0;
+}
+
+@media (min-width: 900px) {
+  .newsletterBandInner {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    gap: clamp(40px, 5vw, 88px);
+    align-items: center;
+  }
+}
+
+.newsletterBandCopy {
+  padding-top: 2px;
+  max-width: 38rem;
+}
+
+.newsletterBandKicker {
+  font-size: var(--cm-text-xs-lg);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cm-accent);
+  margin: 0 0 12px;
+}
+
+.newsletterBandLead {
+  font-size: var(--cm-text-body);
+  color: var(--cm-text-tertiary);
+  line-height: 1.75;
+  margin: 0;
+}

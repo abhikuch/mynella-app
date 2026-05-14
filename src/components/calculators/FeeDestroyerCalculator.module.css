@@ -1,0 +1,227 @@
+.controls {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-bottom: 40px;
+}
+
+.field { display: flex; flex-direction: column; gap: 10px; }
+
+.label {
+  font-size: var(--cm-text-sm-body);
+  color: var(--cm-text-secondary);
+  font-weight: 500;
+}
+
+.label strong { color: var(--cm-accent); }
+
+.input {
+  background: var(--cm-surface-2);
+  border: 1px solid var(--cm-line-2);
+  border-radius: var(--cm-radius-lg);
+  padding: 14px 16px;
+  color: var(--cm-text-primary);
+  font-size: var(--cm-text-body);
+  font-family: var(--cm-font-ui);
+  outline: none;
+  transition: border-color var(--cm-duration-fast);
+  width: 100%;
+}
+.input:focus { border-color: var(--cm-accent); }
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--cm-surface-3);
+  outline: none;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--cm-accent);
+  cursor: pointer;
+}
+
+.sliderRed::-webkit-slider-thumb {
+  background: var(--cm-negative);
+  box-shadow: 0 0 8px rgba(248, 113, 113, 0.5);
+}
+
+/* Results */
+.resultGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 48px;
+}
+
+.card {
+  background: var(--cm-surface-1);
+  border: 1px solid var(--cm-line);
+  border-radius: var(--cm-radius-card-feature);
+  padding: 24px 20px;
+}
+
+.cardFee {
+  background: var(--cm-surface-2);
+  border-color: var(--cm-line-2);
+}
+
+.cardLost {
+  background: var(--cm-negative-muted);
+  border-color: var(--cm-negative-border);
+}
+
+.cardLabel {
+  font-size: var(--cm-text-xs-lg);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--cm-text-muted);
+  margin-bottom: 8px;
+}
+
+.bigNum {
+  font-family: var(--cm-font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--cm-accent);
+  line-height: 1.2;
+}
+
+.bigNumDim { color: var(--cm-text-secondary); }
+.bigNumNeg { color: var(--cm-negative); }
+
+.subline {
+  font-size: var(--cm-text-xs-lg);
+  color: var(--cm-text-muted);
+  margin-top: 6px;
+}
+
+/* Table */
+.tableSection { margin-bottom: 16px; }
+
+.tableScroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+.tableTitle {
+  font-size: var(--cm-text-sm-body);
+  color: var(--cm-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 14px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--cm-text-sm-body);
+}
+
+.table th,
+.table td {
+  padding: 10px 16px;
+  text-align: right;
+  border-bottom: 1px solid var(--cm-line);
+}
+
+.table th:first-child,
+.table td:first-child { text-align: left; }
+
+.table th {
+  font-size: var(--cm-text-xs-lg);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--cm-text-muted);
+  background: var(--cm-surface-1);
+}
+
+.table td { color: var(--cm-text-primary); }
+.activeRow td { background: var(--cm-accent-surface-faint); font-weight: 700; }
+.neg { color: var(--cm-negative) !important; }
+.pos { color: var(--cm-accent) !important; }
+
+/* Chart */
+.chartWrap {
+  background: var(--cm-surface-1);
+  border: 1px solid var(--cm-line);
+  border-radius: var(--cm-radius-card-feature);
+  padding: 16px 12px 8px;
+  margin-bottom: 40px;
+}
+
+.chartLegend {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+  font-size: var(--cm-text-xs-lg);
+  color: var(--cm-text-tertiary);
+}
+
+.legendItem { display: flex; align-items: center; gap: 6px; }
+
+.legendDot {
+  width: 10px;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.legendGap {
+  margin-left: auto;
+  color: var(--cm-negative);
+  font-weight: 600;
+}
+
+.chart {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+/* Drag bar in table */
+.dragTrack {
+  height: 6px;
+  background: var(--cm-surface-3);
+  border-radius: 3px;
+  overflow: hidden;
+  min-width: 60px;
+}
+
+.dragFill {
+  height: 100%;
+  background: var(--cm-negative);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+@media (max-width: 719px) {
+  .controls {
+    grid-template-columns: 1fr;
+  }
+
+  .resultGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .tableScroll {
+    overscroll-behavior-x: contain;
+  }
+
+  .chartWrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  .card {
+    padding: 20px 18px;
+  }
+}
