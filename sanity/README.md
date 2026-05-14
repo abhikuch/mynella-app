@@ -71,33 +71,15 @@ In [sanity.io/manage](https://www.sanity.io/manage) → your project → **API**
 
 ## 5. Content model: **Page copy**
 
-One document per URL “route key” (see `sanity/defaultContent/pageCopySeed.ts`). Used for **SEO title/description** and **hero** text on marketing pages. After changing content, the site revalidates within ~60s.
+One document per URL “route key” (see `sanity/defaultContent/pageCopySeed.ts`). Used for **SEO title/description** and optional **hero** overrides. After changing content, the site revalidates within ~60s.
 
-Run **`npm run seed`** in `sanity/` to create/update all default page copy documents (requires `SANITY_API_TOKEN` in `sanity/.env` or `sanity login` — see seed script header).
+Run **`npm run seed`** in `sanity/` to create/update default page copy documents (requires `SANITY_API_TOKEN` in `sanity/.env` or `sanity login` — see seed script header).
 
 | Route key examples | Page |
 |--------------------|------|
-| `home`, `about`, `contact`, `blog` | Core |
-| `pms`, `pms-polaris` | PMS |
-| `algo`, `algo-optimus`, `algo-pledge-plus`, `algo-polaris-lite` | Algo |
-| `model-portfolios`, `model-portfolios-alpha`, `model-portfolios-quanto` | Model portfolio hubs |
-| `portfolio-quanto-large-cap`, `portfolio-alpha-alpha-100`, … | Portfolio detail |
-| `blog-fy-2025-26-performance` | Performance report |
+| `home`, `about`, `contact`, `terms`, `privacy` | Active marketing routes |
 
-## 6. Content model: **Blog post**
-
-| Field           | Purpose |
-|----------------|---------|
-| Title          | Headline |
-| Slug           | URL: `/blog/{slug}` |
-| Published at   | Shown on cards |
-| Excerpt        | Card + SEO blurb |
-| External URL   | Optional: card links out; on-site page redirects there |
-| Body           | Portable Text for full article |
-
-Avoid using slug `fy-2025-26-performance` — that page is still built in code.
-
-## 7. Content model: **Site settings** (singleton)
+## 6. Content model: **Site settings** (singleton)
 
 Create **one** document the site reads by id `siteSettings`:
 
@@ -106,23 +88,17 @@ Create **one** document the site reads by id `siteSettings`:
 
 | Field group | Purpose |
 |-------------|---------|
-| Home hero | Tag, title lines, subtitle on `/` |
-| About | Pills, title, subtitle on `/about` hero |
-| Founder | Name, role, initials, creds, Portable Text bio (replaces code bio when set) |
+| Home (optional) | `pageCopy` for route `home` can override Nella landing eyebrow / title / subtitle when set |
+| About | Pills, title, subtitle on `/about` |
+| Founder | Name, role, initials, creds, Portable Text bio (reserved for future pages) |
 | Footer | Brand blurb, disclaimer paragraph; optional Terms / Privacy URLs override footer links |
-| Team roster | Lead sentence above the LinkedIn grid |
+| Team roster | Lead sentence when a team section is wired back in |
 
-## 8. Content model: **Team member**
+## 7. Content model: **Team member**
 
-Add roster cards for `/about`. **Sort order** controls listing (then name). Each row needs **name**, **role**, **LinkedIn URL**.
+Seeded via `npm run seed`; optional roster for future About or press layouts. **Sort order** controls listing (then name). Each row needs **name**, **role**, optional **LinkedIn URL**.
 
-If there are **no** team member documents, the site uses the static list in code.
-
-## 9. Content model: **FAQ item**
-
-**Question**, **answer** (Portable Text), **placements** (where the item appears: about, PMS hub, algo hub, model portfolios, etc.), and **order**. If the CMS returns nothing for a placement, the site uses the matching defaults from `sanity/defaultContent/faqExtendedSeed.ts`.
-
-## 10. Host Studio on the web (optional)
+## 8. Host Studio on the web (optional)
 
 ```bash
 cd sanity

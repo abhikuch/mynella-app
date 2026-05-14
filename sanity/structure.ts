@@ -2,7 +2,7 @@ import type { StructureBuilder } from "sanity/desk";
 
 export const structure = (S: StructureBuilder) =>
   S.list()
-    .title("Clearmind")
+    .title("MyNella")
     .items([
       S.listItem()
         .title("Globals")
@@ -15,10 +15,6 @@ export const structure = (S: StructureBuilder) =>
                 .title("Site settings")
                 .id("siteSettings")
                 .child(S.document().schemaType("siteSettings").documentId("siteSettings")),
-              S.listItem()
-                .title("Home page content")
-                .id("homeContent")
-                .child(S.document().schemaType("homeContent").documentId("homeContent")),
               S.listItem()
                 .title("Site chrome")
                 .id("siteChrome")
@@ -38,22 +34,16 @@ export const structure = (S: StructureBuilder) =>
             .title("Library")
             .items([
               S.documentTypeListItem("partner").title("Partners / logos"),
-              S.documentTypeListItem("faqItem").title("FAQ items (by placement)"),
               S.documentTypeListItem("teamMember").title("Team roster"),
             ]),
         ),
       S.divider(),
       S.listItem()
-        .title("Pages & products")
+        .title("Pages")
         .id("pages")
         .child(
           S.list()
-            .title("Pages & products")
-            .items([
-              S.documentTypeListItem("marketingPage").title("Marketing pages (modules)"),
-              S.documentTypeListItem("pageCopy").title("Page copy (SEO & heroes)"),
-              S.documentTypeListItem("portfolioStrategy").title("Model portfolio strategies"),
-              S.documentTypeListItem("post").title("Blog posts"),
-            ]),
+            .title("Pages")
+            .items([S.documentTypeListItem("pageCopy").title("Page copy (SEO & heroes)")]),
         ),
     ]);

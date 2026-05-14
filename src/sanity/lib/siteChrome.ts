@@ -1,9 +1,10 @@
 import { unstable_cache } from "next/cache";
 import { resolveSiteChrome, type SiteChromeDoc } from "@/lib/site-chrome-resolve";
 import { SANITY_NEXT_CACHE_TAG } from "./cache-tag";
+import { SANITY_UNSTABLE_CACHE_REVALIDATE_SECONDS } from "@/lib/sanity-fetch-cache";
 import { getSanityClient } from "./client";
 
-/** Expand partner refs, nav internal pages, and image URLs in one round-trip. */
+/** Expand partner refs and image URLs in one round-trip. */
 export const siteChromeQuery = `*[_type == "siteChrome" && _id == "siteChrome"][0]{
   ...,
   "headerLogo": headerLogo{
@@ -21,16 +22,13 @@ export const siteChromeQuery = `*[_type == "siteChrome" && _id == "siteChrome"][
     label,
     href,
     description,
-    "pathFromPage": internalPage->path,
     children[]{
       label,
       href,
       description,
-      "pathFromPage": internalPage->path,
       children[]{
         label,
-        href,
-        "pathFromPage": internalPage->path
+        href
       }
     }
   }
@@ -44,5 +42,5 @@ export const getResolvedSiteChrome = unstable_cache(
     return resolveSiteChrome(doc);
   },
   ["sanity-site-chrome"],
-  { revalidate: 60, tags: [SANITY_NEXT_CACHE_TAG] },
+  { revalidate: SANITY_UNSTABLE_CACHE_REVALIDATE_SECONDS, tags: [SANITY_NEXT_CACHE_TAG] },
 );

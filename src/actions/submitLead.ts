@@ -1,22 +1,13 @@
 "use server";
 
-import { cookies } from "next/headers";
 import { Resend } from "resend";
-import { CM_BLOG_ACCESS_COOKIE } from "@/lib/lead-capture-constants";
-import {
-  buildBlogWelcomeEmail,
-  buildFooterWelcomeEmail,
-  buildLeadInternalNotification,
-} from "@/lib/lead-welcome-email";
+import { buildFooterWelcomeEmail, buildLeadInternalNotification } from "@/lib/lead-welcome-email";
 import { getResendOutboundEnv } from "@/lib/resend-outbound";
 import { addLeadToResendList, isLeadAlreadyInResendList } from "@/lib/resend-leads-list";
 import { normalizeIndiaMobile } from "@/lib/phone-india";
 import { SITE_URL } from "@/lib/seo-config";
 import { normalizeLeadEmail, validateNewsletterFormData } from "@/lib/form-validation";
-import { fetchPostList } from "@/sanity/lib/queries";
 import { getResolvedSiteChrome } from "@/sanity/lib/siteChrome";
-
-const COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
 
 export type SubmitLeadResult = { ok: true } | { ok: false; error: string };
 
@@ -26,8 +17,7 @@ export async function submitLead(formData: FormData): Promise<SubmitLeadResult> 
     return { ok: true };
   }
 
-  const source = formData.get("source");
-  if (source !== "footer" && source !== "blog") {
+  if (formData.get("source") !== "footer") {
     return { ok: false, error: "Invalid request." };
   }
 
@@ -48,10 +38,9 @@ export async function submitLead(formData: FormData): Promise<SubmitLeadResult> 
 
   if (outbound) {
     const resend = new Resend(outbound.apiKey);
-    const label = source === "blog" ? "Blog" : "Newsletter";
+    const label = "Newsletter";
     const phoneDisplay = `+91 ${phoneDigits}`;
     const siteUrl = SITE_URL;
-    const blogUrl = `${siteUrl}/blog`;
     const contactUrl = `${siteUrl}/contact`;
 
     const chrome = await getResolvedSiteChrome();
@@ -59,30 +48,16 @@ export async function submitLead(formData: FormData): Promise<SubmitLeadResult> 
 
     const internal = buildLeadInternalNotification({ label, email, phoneDisplay });
 
-    const posts = source === "blog" ? (await fetchPostList()).slice(0, 5) : [];
-
     const alreadyInList = await isLeadAlreadyInResendList(resend, email);
 
     if (!alreadyInList) {
-      const welcome =
-        source === "blog" ?
-          buildBlogWelcomeEmail({
-            siteUrl,
-            bookCallUrl,
-            blogUrl,
-            contactUrl,
-            cta: chrome.ctaLinks,
-            email,
-            phoneDisplay,
-            posts,
-          })
-        : buildFooterWelcomeEmail({
-            siteUrl,
-            bookCallUrl,
-            contactUrl,
-            email,
-            phoneDisplay,
-          });
+      const welcome = buildFooterWelcomeEmail({
+        siteUrl,
+        bookCallUrl,
+        contactUrl,
+        email,
+        phoneDisplay,
+      });
 
       const [teamSend, userSend] = await Promise.all([
         resend.emails.send({
@@ -113,23 +88,11 @@ export async function submitLead(formData: FormData): Promise<SubmitLeadResult> 
 
     void addLeadToResendList(resend, {
       email,
-      leadSource: source,
+      leadSource: "footer",
       phoneDisplay: phoneDisplay,
     });
   } else if (!isProd) {
-    console.info("submitLead (dev, no Resend):", { source, email, phoneDigits });
-  }
-
-  const jar = await cookies();
-  /** Only the blog gate unlocks reading on-site posts; footer newsletter does not. */
-  if (source === "blog") {
-    jar.set(CM_BLOG_ACCESS_COOKIE, "1", {
-      httpOnly: true,
-      secure: isProd,
-      sameSite: "lax",
-      path: "/",
-      maxAge: COOKIE_MAX_AGE,
-    });
+    console.info("submitLead (dev, no Resend):", { source: "footer", email, phoneDigits });
   }
 
   return { ok: true };

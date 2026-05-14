@@ -70,7 +70,7 @@ export function NewsletterForm({
         <>
           {!isBand ? (
             <p className={styles.intro}>
-              Occasional notes on markets, mandates, and process—no spam. Email and mobile are both
+              Occasional updates on launches, editorial drops, and Nella app news — no spam. Email and mobile are both
               required so we can reach you reliably.
             </p>
           ) : null}

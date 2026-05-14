@@ -10,7 +10,7 @@ export const SITE_URL = (
 export const SITE_NAME = "MyNella";
 
 export const DEFAULT_DESCRIPTION =
-  "MyNella — a modern marketing site. Replace this description with your positioning, compliance-approved disclosures, and primary keywords.";
+  "MyNella — marketing home for Nella, a calm companion for aesthetic routines and between-visit care. Editorial surface: SEO, Sanity, and Vercel.";
 
 /** X (Twitter) handle for twitter:site (no @ in schema.org; with @ for Twitter cards). */
 export const TWITTER_HANDLE = "@mynella";
@@ -44,18 +44,8 @@ export function ogAssetPathForPathname(pathname: string): string {
   if (p === "/") return "/og/home.png";
   if (p === "/about") return "/og/about.png";
   if (p === "/contact") return "/og/contact.png";
-  if (p === "/wealth-management-pune") return "/og/about.png";
   if (p === "/terms") return "/og/terms.png";
   if (p === "/privacy") return "/og/privacy.png";
-  if (p === "/disclosures") return "/og/disclosures.png";
-  if (p.startsWith("/team")) return "/og/team.png";
-  if (p === "/blog/guides") return "/og/guides.png";
-  if (p === "/blog/compare") return "/og/compare.png";
-  if (p === "/blog" || p.startsWith("/blog/")) return "/og/blog.png";
-  if (p.startsWith("/pms")) return "/og/pms.png";
-  if (p.startsWith("/algo")) return "/og/algo.png";
-  if (p.startsWith("/model-portfolios")) return "/og/model-portfolios.png";
-  if (p.startsWith("/calculators")) return "/og/calculators.png";
   return "/og/default.png";
 }
 

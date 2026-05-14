@@ -4,8 +4,8 @@ import {
   registeredOfficePostalAddressJsonLd,
 } from "@/lib/company-profile";
 import { socialLinks } from "@/lib/navigation";
-import { financialServiceJsonLdScript } from "@/lib/pillar-jsonld";
 import {
+  DEFAULT_DESCRIPTION,
   SITE_NAME,
   SITE_URL,
   ORGANIZATION_LOGO_PATH,
@@ -36,7 +36,7 @@ export function SiteJsonLd({
     name: SITE_NAME,
     legalName: "MyNella Consultancy Pvt. Ltd.",
     url: SITE_URL,
-    description: companyLinkedIn.tagline,
+    description: DEFAULT_DESCRIPTION,
     logo: {
       "@type": "ImageObject",
       url: logoUrl,
@@ -52,7 +52,7 @@ export function SiteJsonLd({
     "@type": "WebSite",
     name: SITE_NAME,
     url: SITE_URL,
-    description: companyLinkedIn.tagline,
+    description: DEFAULT_DESCRIPTION,
     publisher: {
       "@type": "Organization",
       name: SITE_NAME,
@@ -71,7 +71,6 @@ export function SiteJsonLd({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(website) }}
       />
-      {financialServiceJsonLdScript()}
     </>
   );
 }

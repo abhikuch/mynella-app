@@ -3,6 +3,7 @@ import type { NextRequest } from "next/server";
 import { SANITY_NEXT_CACHE_TAG } from "@/sanity/lib/cache-tag";
 
 export const dynamic = "force-dynamic";
+export const maxDuration = 30;
 
 function unauthorized() {
   return new Response("Unauthorized", { status: 401 });

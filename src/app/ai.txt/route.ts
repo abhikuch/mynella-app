@@ -2,7 +2,8 @@ import { NextResponse } from "next/server";
 import { DEFAULT_DESCRIPTION, SITE_URL, SITEMAP_PATHS } from "@/lib/seo-config";
 import { getSiteSettings } from "@/sanity/lib/site";
 
-export const revalidate = 60;
+/** Literal for Next segment config (imports are not allowed here). Matches `SANITY_UNSTABLE_CACHE_REVALIDATE_SECONDS`. */
+export const revalidate = 3600;
 
 export async function GET() {
   const settings = await getSiteSettings();

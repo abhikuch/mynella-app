@@ -68,7 +68,7 @@ export function validateLeadConsent(consent: boolean): string | null {
   return null;
 }
 
-/** Client + server: newsletter / blog gate fields. */
+/** Client + server: footer newsletter fields. */
 export function validateNewsletterFormData(fd: FormData): string | null {
   return (
     validateLeadEmail(String(fd.get("email") ?? "")) ??

@@ -8,11 +8,11 @@ export const companyLinkedIn = {
   url: "https://www.linkedin.com/company/mynella",
   /** As shown on the company page headline */
   tagline:
-    "Helping investors create wealth over the long term via a systematic and objective market approach. SEBI-registered PMS & RA.",
+    "MyNella — beauty editorial, the Nella companion app, and a calm marketing surface powered by Next.js and Sanity.",
   /** “About us” block on LinkedIn */
   about:
-    "SEBI-registered PMS and RA. Wealth generation through a systematic approach to markets — enabling objective, adaptive decision-making.",
-  industry: "Financial Services",
+    "Editorial makeup and skincare content, plus early access communication for the Nella app. Not medical or investment advice.",
+  industry: "Beauty & personal care",
   /** LinkedIn company size band */
   sizeBand: "2–10 employees",
   type: "Privately held",
@@ -40,15 +40,12 @@ export const companyLinkedIn = {
   /** Coordinates from the Maps place URL above */
   registeredOfficeGeo: { latitude: 18.538958, longitude: 73.8859181 } as const,
   specialties: [
-    "Finance",
-    "Software",
-    "Strategy",
-    "Equity",
-    "Investing",
-    "Options",
-    "Futures",
-    "Derivatives",
-    "Trading",
+    "Beauty",
+    "Editorial",
+    "Skincare",
+    "Makeup",
+    "Content",
+    "Web",
   ],
 } as const;
 

@@ -11,18 +11,6 @@ const socialFields = [
   defineField({ name: "href", type: "string", validation: (r) => r.required() }),
 ];
 
-const matcherPickFields = [
-  defineField({ name: "title", type: "string", validation: (r) => r.required() }),
-  defineField({ name: "href", type: "string", validation: (r) => r.required() }),
-  defineField({ name: "blurb", type: "text", rows: 2, validation: (r) => r.required() }),
-];
-
-const matcherBandFields = [
-  defineField({ name: "id", type: "string", description: "emerging | affluent | hnw", validation: (r) => r.required() }),
-  defineField({ name: "label", type: "string", validation: (r) => r.required() }),
-  defineField({ name: "hint", type: "string", validation: (r) => r.required() }),
-];
-
 export const siteChrome = defineType({
   name: "siteChrome",
   title: "Site chrome (nav, CTAs, partners, global UI)",
@@ -71,41 +59,6 @@ export const siteChrome = defineType({
     defineField({ name: "brandName", type: "string" }),
     defineField({ name: "brandTagline", type: "string" }),
     defineField({ name: "logoAriaLabel", type: "string" }),
-    defineField({ name: "heroPrimaryCtaLabel", type: "string" }),
-    defineField({ name: "heroStat1Value", type: "string" }),
-    defineField({ name: "heroStat1Unit", type: "string" }),
-    defineField({ name: "heroStat1Label", type: "string" }),
-    defineField({ name: "heroStat2Value", type: "string" }),
-    defineField({ name: "heroStat2Label", type: "string" }),
-    defineField({ name: "heroStat3Value", type: "string" }),
-    defineField({ name: "heroStat3Unit", type: "string" }),
-    defineField({ name: "heroStat3Label", type: "string" }),
-    defineField({ name: "heroStat4Value", type: "string" }),
-    defineField({ name: "heroStat4Label", type: "string" }),
-    defineField({ name: "strategyMatcherTrigger", type: "string" }),
-    defineField({ name: "strategyMatcherPanelLead", type: "text", rows: 3 }),
-    defineField({ name: "strategyMatcherBrowseAllLabel", type: "string" }),
-    defineField({ name: "strategyMatcherBandsAria", type: "string" }),
-    defineField({
-      name: "strategyMatcherBands",
-      type: "array",
-      of: [{ type: "object", fields: matcherBandFields }],
-    }),
-    defineField({
-      name: "strategyMatcherPicksEmerging",
-      type: "array",
-      of: [{ type: "object", fields: matcherPickFields }],
-    }),
-    defineField({
-      name: "strategyMatcherPicksAffluent",
-      type: "array",
-      of: [{ type: "object", fields: matcherPickFields }],
-    }),
-    defineField({
-      name: "strategyMatcherPicksHnw",
-      type: "array",
-      of: [{ type: "object", fields: matcherPickFields }],
-    }),
     defineField({ name: "navMobileInvestorLogin", type: "string" }),
     defineField({ name: "navMobileBookCall", type: "string" }),
     defineField({ name: "navOverviewSuffix", type: "string", description: 'e.g. "Overview"' }),
@@ -139,5 +92,65 @@ export const siteChrome = defineType({
       ],
     }),
     defineField({ name: "companySpecialties", type: "array", of: [{ type: "string" }] }),
+    defineField({
+      name: "headerUtilityLinks",
+      title: "Header utility links (optional)",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            defineField({ name: "label", type: "string", validation: (r) => r.required() }),
+            defineField({ name: "href", type: "string", validation: (r) => r.required() }),
+            defineField({ name: "openInNewTab", type: "boolean", initialValue: false }),
+          ],
+        },
+      ],
+    }),
+    defineField({
+      name: "headerLogo",
+      title: "Header logo override (optional)",
+      type: "object",
+      fields: [
+        defineField({ name: "url", type: "url" }),
+        defineField({ name: "alt", type: "string" }),
+      ],
+    }),
+    defineField({ name: "headerShowInvestorLogin", type: "boolean" }),
+    defineField({ name: "headerShowBookCall", type: "boolean" }),
+    defineField({ name: "headerNavInvestorLabel", type: "string" }),
+    defineField({ name: "headerNavBookLabel", type: "string" }),
+    defineField({ name: "footerShowProductsColumn", type: "boolean" }),
+    defineField({ name: "footerProductNavLabels", type: "array", of: [{ type: "string" }] }),
+    defineField({
+      name: "footerExtraColumns",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            defineField({ name: "title", type: "string", validation: (r) => r.required() }),
+            defineField({
+              name: "links",
+              type: "array",
+              of: [
+                {
+                  type: "object",
+                  fields: [
+                    defineField({ name: "label", type: "string", validation: (r) => r.required() }),
+                    defineField({ name: "href", type: "string", validation: (r) => r.required() }),
+                    defineField({ name: "openInNewTab", type: "boolean", initialValue: false }),
+                  ],
+                },
+              ],
+            }),
+          ],
+        },
+      ],
+    }),
+    defineField({ name: "footerShowNewsletter", type: "boolean" }),
+    defineField({ name: "footerShowSocial", type: "boolean" }),
+    defineField({ name: "footerShowThemeToggle", type: "boolean" }),
+    defineField({ name: "footerShowSebiBlock", type: "boolean" }),
   ],
 });

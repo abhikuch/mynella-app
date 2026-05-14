@@ -13,6 +13,7 @@ import { organizationLogoAbsoluteUrl, resolveShareImageUrl } from "@/lib/seo-san
 import { getSiteSettings } from "@/sanity/lib/site";
 import { ThemeScript } from "@/components/theme/ThemeScript";
 import { GoogleAnalytics } from "@/components/seo/GoogleAnalytics";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "@/styles/globals.css";
 
 export const viewport: Viewport = {
@@ -33,7 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
       url: defaultOgUrl,
       width: OG_IMAGE_WIDTH,
       height: OG_IMAGE_HEIGHT,
-      alt: `${SITE_NAME} — Invest Better`,
+      alt: `${SITE_NAME} — Nella`,
     },
   ];
   const verification: Metadata["verification"] = {};
@@ -48,7 +49,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     metadataBase: new URL(SITE_URL),
     title: {
-      default: `${SITE_NAME} — Invest Better`,
+      default: `${SITE_NAME} — Nella & beauty editorial`,
       template: `%s | ${SITE_NAME}`,
     },
     description: DEFAULT_DESCRIPTION,
@@ -61,14 +62,14 @@ export async function generateMetadata(): Promise<Metadata> {
       locale: "en_IN",
       url: SITE_URL,
       siteName: SITE_NAME,
-      title: `${SITE_NAME} — Invest Better`,
+      title: `${SITE_NAME} — Nella & beauty editorial`,
       description: DEFAULT_DESCRIPTION,
       images: defaultOgImages,
     },
     twitter: {
       card: "summary_large_image",
       site: TWITTER_HANDLE,
-      title: `${SITE_NAME} — Invest Better`,
+      title: `${SITE_NAME} — Nella & beauty editorial`,
       description: DEFAULT_DESCRIPTION,
       images: [defaultOgUrl],
     },
@@ -98,6 +99,7 @@ export default async function RootLayout({
       </head>
       <body>
         <GoogleAnalytics />
+        <SpeedInsights />
         <SiteJsonLd organizationLogoUrl={logoUrl} />
         {children}
       </body>

@@ -99,25 +99,6 @@ export type SiteChromeDoc = {
   brandName?: string | null;
   brandTagline?: string | null;
   logoAriaLabel?: string | null;
-  heroPrimaryCtaLabel?: string | null;
-  heroStat1Value?: string | null;
-  heroStat1Unit?: string | null;
-  heroStat1Label?: string | null;
-  heroStat2Value?: string | null;
-  heroStat2Label?: string | null;
-  heroStat3Value?: string | null;
-  heroStat3Unit?: string | null;
-  heroStat3Label?: string | null;
-  heroStat4Value?: string | null;
-  heroStat4Label?: string | null;
-  strategyMatcherTrigger?: string | null;
-  strategyMatcherPanelLead?: string | null;
-  strategyMatcherBrowseAllLabel?: string | null;
-  strategyMatcherBandsAria?: string | null;
-  strategyMatcherBands?: { id?: string | null; label?: string | null; hint?: string | null }[] | null;
-  strategyMatcherPicksEmerging?: { title?: string | null; href?: string | null; blurb?: string | null }[] | null;
-  strategyMatcherPicksAffluent?: { title?: string | null; href?: string | null; blurb?: string | null }[] | null;
-  strategyMatcherPicksHnw?: { title?: string | null; href?: string | null; blurb?: string | null }[] | null;
   navMobileInvestorLogin?: string | null;
   navMobileBookCall?: string | null;
   navOverviewSuffix?: string | null;
@@ -196,19 +177,6 @@ function pickLinks(
   return fb.map((r) => ({ ...r }));
 }
 
-export type StrategyMatcherResolved = {
-  trigger: string;
-  panelLead: string;
-  browseAllLabel: string;
-  bandsAria: string;
-  bands: { id: "emerging" | "affluent" | "hnw"; label: string; hint: string }[];
-  picks: {
-    emerging: { title: string; href: string; blurb: string }[];
-    affluent: { title: string; href: string; blurb: string }[];
-    hnw: { title: string; href: string; blurb: string }[];
-  };
-};
-
 export type ResolvedSiteChrome = {
   navigation: NavItem[];
   ctaLinks: CtaLinksResolved;
@@ -217,11 +185,6 @@ export type ResolvedSiteChrome = {
   socialLinks: { id: string; label: string; href: string }[];
   partners: { name: string; href: string; logo: string }[];
   brand: { name: string; tagline: string; ariaLabel: string };
-  hero: {
-    primaryCtaLabel: string;
-    stats: { value: string; label: string; unit?: string }[];
-  };
-  strategyMatcher: StrategyMatcherResolved;
   navUi: {
     mobileInvestorLogin: string;
     mobileBookCall: string;
@@ -265,35 +228,6 @@ export type ResolvedSiteChrome = {
     showSebiBlock: boolean;
   };
 };
-
-function mapMatcherBands(
-  raw: SiteChromeDoc,
-  fb: typeof siteChromeSeed.strategyMatcherBands,
-): StrategyMatcherResolved["bands"] {
-  const list = raw?.strategyMatcherBands?.length ? raw.strategyMatcherBands : fb;
-  return list.map((b) => ({
-    id: (b.id === "emerging" || b.id === "affluent" || b.id === "hnw" ? b.id : "emerging") as
-      | "emerging"
-      | "affluent"
-      | "hnw",
-    label: b.label?.trim() || "",
-    hint: b.hint?.trim() || "",
-  }));
-}
-
-function mapPicks(
-  raw: { title?: string | null; href?: string | null; blurb?: string | null }[] | null | undefined,
-  fb: readonly { title: string; href: string; blurb: string }[],
-): { title: string; href: string; blurb: string }[] {
-  if (raw && raw.length > 0) {
-    return raw.map((p) => ({
-      title: p.title?.trim() || "",
-      href: p.href?.trim() || "#",
-      blurb: p.blurb?.trim() || "",
-    }));
-  }
-  return fb.map((p) => ({ title: p.title, href: p.href, blurb: p.blurb }));
-}
 
 function mapChromeHrefLinks(
   raw: { label?: string | null; href?: string | null; openInNewTab?: boolean | null }[] | null | undefined,
@@ -373,41 +307,6 @@ export function resolveSiteChrome(doc: SiteChromeDoc): ResolvedSiteChrome {
       name: doc?.brandName?.trim() || fb.brandName,
       tagline: doc?.brandTagline?.trim() || fb.brandTagline,
       ariaLabel: doc?.logoAriaLabel?.trim() || fb.logoAriaLabel,
-    },
-    hero: {
-      primaryCtaLabel: doc?.heroPrimaryCtaLabel?.trim() || fb.heroPrimaryCtaLabel,
-      stats: [
-        {
-          value: doc?.heroStat1Value?.trim() || fb.heroStat1Value,
-          unit: doc?.heroStat1Unit?.trim() || fb.heroStat1Unit,
-          label: doc?.heroStat1Label?.trim() || fb.heroStat1Label,
-        },
-        {
-          value: doc?.heroStat2Value?.trim() || fb.heroStat2Value,
-          label: doc?.heroStat2Label?.trim() || fb.heroStat2Label,
-        },
-        {
-          value: doc?.heroStat3Value?.trim() || fb.heroStat3Value,
-          unit: doc?.heroStat3Unit?.trim() || fb.heroStat3Unit,
-          label: doc?.heroStat3Label?.trim() || fb.heroStat3Label,
-        },
-        {
-          value: doc?.heroStat4Value?.trim() || fb.heroStat4Value,
-          label: doc?.heroStat4Label?.trim() || fb.heroStat4Label,
-        },
-      ],
-    },
-    strategyMatcher: {
-      trigger: doc?.strategyMatcherTrigger?.trim() || fb.strategyMatcherTrigger,
-      panelLead: doc?.strategyMatcherPanelLead?.trim() || fb.strategyMatcherPanelLead,
-      browseAllLabel: doc?.strategyMatcherBrowseAllLabel?.trim() || fb.strategyMatcherBrowseAllLabel,
-      bandsAria: doc?.strategyMatcherBandsAria?.trim() || fb.strategyMatcherBandsAria,
-      bands: mapMatcherBands(doc, fb.strategyMatcherBands),
-      picks: {
-        emerging: mapPicks(doc?.strategyMatcherPicksEmerging, fb.strategyMatcherPicksEmerging),
-        affluent: mapPicks(doc?.strategyMatcherPicksAffluent, fb.strategyMatcherPicksAffluent),
-        hnw: mapPicks(doc?.strategyMatcherPicksHnw, fb.strategyMatcherPicksHnw),
-      },
     },
     navUi: {
       mobileInvestorLogin: doc?.navMobileInvestorLogin?.trim() || fb.navMobileInvestorLogin,

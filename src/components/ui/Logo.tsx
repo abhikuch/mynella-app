@@ -16,7 +16,7 @@ export type LogoCustomMark = {
 
 const FALLBACK: LogoBrand = {
   name: "MyNella",
-  tagline: "Invest Better",
+  tagline: "Makeup & beauty",
   ariaLabel: "MyNella — Home",
 };
 

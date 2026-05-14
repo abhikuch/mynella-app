@@ -1,6 +1,7 @@
 import { unstable_cache } from "next/cache";
 import type { ContactPageRaw } from "@/lib/contact-page-content";
 import { SANITY_NEXT_CACHE_TAG } from "./cache-tag";
+import { SANITY_UNSTABLE_CACHE_REVALIDATE_SECONDS } from "@/lib/sanity-fetch-cache";
 import { getSanityClient } from "./client";
 
 const contactPageQuery = `*[_type == "contactPage" && _id == "contactPage"][0]{
@@ -44,5 +45,5 @@ export const getContactPage = unstable_cache(
     return client.fetch<ContactPageRaw>(contactPageQuery);
   },
   ["sanity-contact-page"],
-  { revalidate: 60, tags: [SANITY_NEXT_CACHE_TAG] },
+  { revalidate: SANITY_UNSTABLE_CACHE_REVALIDATE_SECONDS, tags: [SANITY_NEXT_CACHE_TAG] },
 );

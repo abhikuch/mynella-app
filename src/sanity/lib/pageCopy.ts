@@ -1,6 +1,7 @@
 import { unstable_cache } from "next/cache";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { SANITY_NEXT_CACHE_TAG } from "./cache-tag";
+import { SANITY_UNSTABLE_CACHE_REVALIDATE_SECONDS } from "@/lib/sanity-fetch-cache";
 import { getSanityClient } from "./client";
 
 export const pageCopyByRouteQuery = `*[_type == "pageCopy" && routeKey == $routeKey][0]{
@@ -81,7 +82,7 @@ export async function getPageCopy(
       });
     },
     ["sanity-page-copy", routeKey],
-    { revalidate: 60, tags: [SANITY_NEXT_CACHE_TAG] },
+    { revalidate: SANITY_UNSTABLE_CACHE_REVALIDATE_SECONDS, tags: [SANITY_NEXT_CACHE_TAG] },
   );
   return cached();
 }

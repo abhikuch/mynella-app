@@ -6,7 +6,6 @@ import {
 import type { Metadata } from "next";
 import { getPageCopy } from "@/sanity/lib/pageCopy";
 import { getSiteSettings } from "@/sanity/lib/site";
-import { getMarketingPageByRouteKey } from "@/sanity/lib/marketingPage";
 import { resolveShareImageUrl } from "@/lib/seo-sanity";
 import { getSeoFallback } from "@/lib/seo-content";
 
@@ -40,38 +39,6 @@ export async function pageMetadataForRoute(
     extra?.ogImageUrl ??
     resolveShareImageUrl(pathname, [copy?.seoOgImage, settings?.seoDefaultOgImage]);
   return buildPageMetadata(copy, fb, { pathname, ogImageUrl, ...extra });
-}
-
-/** Hub pages: marketing meta + page copy + site default OG. */
-export async function marketingHubMetadata(
-  pageCopyRouteKey: string,
-  marketingRouteKey: string,
-  fallback: { title: string; description: string } | null,
-  pathname: string,
-): Promise<Metadata> {
-  const fb = fallback ?? getSeoFallback(pathname);
-  const [copy, marketing, settings] = await Promise.all([
-    getPageCopy(pageCopyRouteKey),
-    getMarketingPageByRouteKey(marketingRouteKey),
-    getSiteSettings(),
-  ]);
-  const title =
-    marketing?.metaTitle?.trim() || copy?.metaTitle?.trim() || fb.title;
-  const description =
-    marketing?.metaDescription?.trim() ||
-    copy?.metaDescription?.trim() ||
-    fb.description;
-  const ogImageUrl = resolveShareImageUrl(pathname, [
-    marketing?.seoOgImage,
-    copy?.seoOgImage,
-    settings?.seoDefaultOgImage,
-  ]);
-  return buildPageMetadata(copy, fb, {
-    pathname,
-    ogImageUrl,
-    titleOverride: title,
-    descriptionOverride: description,
-  });
 }
 
 export function mergedPills(

@@ -2,8 +2,8 @@ import { unstable_cache } from "next/cache";
 import type { PortableTextBlock } from "@portabletext/types";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { SANITY_NEXT_CACHE_TAG } from "./cache-tag";
+import { SANITY_UNSTABLE_CACHE_REVALIDATE_SECONDS } from "@/lib/sanity-fetch-cache";
 import { getSanityClient } from "./client";
-import { urlForImage } from "./image";
 
 export const siteSettingsQuery = `*[_type == "siteSettings" && _id == "siteSettings"][0]{
   homeEyebrowTag,
@@ -71,35 +71,6 @@ export type SiteSettingsDoc = {
   seoAllowAiCrawlers: boolean | null;
 };
 
-export const teamMembersFromCmsQuery = `*[_type == "teamMember"] | order(sortOrder asc, name asc) {
-  name,
-  role,
-  "linkedInUrl": coalesce(linkedInUrl, ""),
-  portrait
-}`;
-
-type CmsTeamMemberRaw = {
-  name: string;
-  role: string;
-  linkedInUrl: string | null;
-  portrait: SanityImageSource | null;
-};
-
-export type CmsTeamMember = {
-  name: string;
-  role: string;
-  linkedInUrl: string;
-  portraitUrl: string | null;
-};
-
-function portraitUrlFromCms(portrait: SanityImageSource | null): string | null {
-  if (!portrait) return null;
-  return (
-    urlForImage(portrait)?.width(112).height(112).fit("crop").quality(85).url() ??
-    null
-  );
-}
-
 export const getSiteSettings = unstable_cache(
   async (): Promise<SiteSettingsDoc | null> => {
     const client = getSanityClient();
@@ -107,21 +78,5 @@ export const getSiteSettings = unstable_cache(
     return client.fetch<SiteSettingsDoc | null>(siteSettingsQuery);
   },
   ["sanity-site-settings"],
-  { revalidate: 60, tags: [SANITY_NEXT_CACHE_TAG] },
-);
-
-export const getTeamMembersFromCms = unstable_cache(
-  async (): Promise<CmsTeamMember[]> => {
-    const client = getSanityClient();
-    if (!client) return [];
-    const rows = await client.fetch<CmsTeamMemberRaw[]>(teamMembersFromCmsQuery);
-    return rows.map((m) => ({
-      name: m.name,
-      role: m.role,
-      linkedInUrl: m.linkedInUrl?.trim() ?? "",
-      portraitUrl: portraitUrlFromCms(m.portrait),
-    }));
-  },
-  ["sanity-team-members"],
-  { revalidate: 60, tags: [SANITY_NEXT_CACHE_TAG] },
+  { revalidate: SANITY_UNSTABLE_CACHE_REVALIDATE_SECONDS, tags: [SANITY_NEXT_CACHE_TAG] },
 );
