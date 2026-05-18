@@ -28,6 +28,11 @@ export const SEO_CONTENT: Record<string, SeoEntry> = {
     title: "Privacy Policy | MyNella",
     description: "How MyNella collects, uses, and protects your information.",
   },
+  "/delete-account": {
+    title: "Delete your Nella account | MyNella",
+    description:
+      "Request deletion of your Nella companion app account and associated personal data.",
+  },
 };
 
 /** Map Sanity `pageCopy.routeKey` → canonical pathname (for metadata fallback). */
@@ -37,6 +42,7 @@ export const ROUTE_KEY_TO_PATH: Record<string, string> = {
   contact: "/contact",
   terms: "/terms",
   privacy: "/privacy",
+  "delete-account": "/delete-account",
 };
 
 const BLOG_CANONICAL_TO_LEGACY_SEO_KEY: Record<string, string> = {};

@@ -11,9 +11,11 @@ import {
   validateContactFormData,
 } from "@/lib/form-validation";
 import { INDIA_MOBILE_HELP } from "@/lib/phone-india";
-import styles from "./ContactPage.module.css";
+import darkStyles from "./ContactPage.module.css";
+import marketingStyles from "./marketing-contact-form.module.css";
 
 type Props = {
+  variant?: "dark" | "marketing";
   submitLabel: string;
   placeholders: {
     firstName: string;
@@ -26,7 +28,13 @@ type Props = {
   productOptions: ContactProductOption[];
 };
 
-export function ContactForm({ submitLabel, placeholders, productOptions }: Props) {
+export function ContactForm({
+  variant = "dark",
+  submitLabel,
+  placeholders,
+  productOptions,
+}: Props) {
+  const styles = variant === "marketing" ? marketingStyles : darkStyles;
   const [error, setError] = useState<string | null>(null);
   const [done, setDone] = useState(false);
   const [pending, startTransition] = useTransition();

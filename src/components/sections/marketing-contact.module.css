@@ -1,0 +1,76 @@
+.grid {
+  display: grid;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (min-width: 800px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 300px);
+  }
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sideBlock h3 {
+  font-family: var(--nl-font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.35rem;
+  color: var(--nl-ink);
+}
+
+.sideBlock p {
+  margin: 0 0 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--nl-muted);
+}
+
+.sideBtn {
+  display: inline-flex;
+  padding: 0.55rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--nl-ink);
+  border: 1px solid var(--nl-rule);
+  border-radius: 2px;
+}
+
+.sideBtn:hover {
+  border-color: var(--nl-ink);
+}
+
+.contactLines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.875rem;
+}
+
+.contactLines a {
+  color: var(--nl-accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.contactLines a:hover {
+  text-decoration: underline;
+}
+
+.note {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--nl-muted);
+}
+
+.note a {
+  color: var(--nl-accent);
+  font-weight: 600;
+}

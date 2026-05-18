@@ -1,0 +1,130 @@
+.form {
+  max-width: 28rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.field label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--nl-ink);
+  margin-bottom: 0.35rem;
+}
+
+.optional {
+  font-weight: 400;
+  color: var(--nl-muted);
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.65rem 0.75rem;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  color: var(--nl-ink);
+  background: var(--nl-paper);
+  border: 1px solid var(--nl-rule);
+  border-radius: 2px;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: 2px solid color-mix(in srgb, var(--nl-accent) 40%, transparent);
+  outline-offset: 1px;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 5rem;
+}
+
+.hint {
+  margin: 0.35rem 0 0;
+  font-size: 0.75rem;
+  color: var(--nl-muted);
+  line-height: 1.45;
+}
+
+.checkbox {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--nl-ink-soft);
+  cursor: pointer;
+}
+
+.checkbox input {
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.checkbox a {
+  color: var(--nl-accent);
+  font-weight: 600;
+}
+
+.error {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #8b2e2e;
+  font-weight: 600;
+}
+
+.submit {
+  align-self: flex-start;
+  padding: 0.7rem 1.25rem;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--nl-paper);
+  background: var(--nl-ink);
+  border: 1px solid var(--nl-ink);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.submit:hover:not(:disabled) {
+  background: var(--nl-ink-soft);
+}
+
+.submit:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.success {
+  max-width: var(--nl-measure);
+  padding: 1.25rem 1.35rem;
+  background: var(--nl-accent-soft);
+  border-left: 3px solid var(--nl-accent);
+}
+
+.successTitle {
+  font-family: var(--nl-font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: var(--nl-ink);
+}
+
+.successBody {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--nl-ink-soft);
+}

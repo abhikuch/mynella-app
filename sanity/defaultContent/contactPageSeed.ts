@@ -20,9 +20,10 @@ export const contactPageSeed = {
   officeAddress: "Update this address in Sanity Studio when you have a public location.",
   followTitle: "Social",
   productOptions: [
+    { label: "Nella app support", value: "App support" },
     { label: "Press & media", value: "Press" },
-    { label: "Brand partnership", value: "Partnership" },
-    { label: "Product question", value: "Product" },
+    { label: "Partnership", value: "Partnership" },
+    { label: "Waitlist / early access", value: "Waitlist" },
     { label: "Something else", value: "General" },
   ],
   formSubmitLabel: "Send message",

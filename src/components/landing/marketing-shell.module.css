@@ -1,0 +1,324 @@
+/**
+ * Shared Nella marketing shell — landing tokens (--nl-*) for inner routes.
+ * See DESIGN.md Appendix L for composition intent.
+ */
+.root {
+  --nl-paper: #f4f1eb;
+  --nl-paper-2: #ebe6dc;
+  --nl-ink: #1a1512;
+  --nl-ink-soft: #3d342c;
+  --nl-muted: #6b625a;
+  --nl-rule: rgba(26, 21, 18, 0.12);
+  --nl-accent: #7a5c32;
+  --nl-accent-soft: rgba(122, 92, 50, 0.14);
+  --nl-font-display: var(--font-fraunces), ui-serif, Georgia, "Times New Roman", serif;
+  --nl-font-ui: var(--font-dm-sans), system-ui, sans-serif;
+  --nl-measure: 38rem;
+  --nl-max: 56rem;
+  --nl-gutter: clamp(1.15rem, 4vw, 2rem);
+
+  font-family: var(--nl-font-ui);
+  color: var(--nl-ink);
+  background: var(--nl-paper);
+  min-height: 100vh;
+  color-scheme: light;
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip:focus {
+  left: var(--nl-gutter);
+  top: 12px;
+  width: auto;
+  height: auto;
+  padding: 10px 16px;
+  background: var(--nl-ink);
+  color: var(--nl-paper);
+  border-radius: 2px;
+  z-index: 100;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.8125rem;
+}
+
+.topBar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0.85rem var(--nl-gutter);
+  background: color-mix(in srgb, var(--nl-paper) 92%, transparent);
+  border-bottom: 1px solid var(--nl-rule);
+}
+
+.brand {
+  font-family: var(--nl-font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--nl-ink);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.brand em {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--nl-accent);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.navLink {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--nl-muted);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+
+.navLink:hover,
+.navLinkActive {
+  color: var(--nl-ink);
+}
+
+.navLinkEm {
+  color: var(--nl-ink);
+}
+
+.main {
+  padding-bottom: 0;
+}
+
+.siteFooter {
+  padding: 1.5rem var(--nl-gutter) calc(1.5rem + env(safe-area-inset-bottom, 0));
+  background: var(--nl-ink);
+  color: color-mix(in srgb, var(--nl-paper) 65%, transparent);
+  font-size: 0.8125rem;
+  border-top: 1px solid color-mix(in srgb, var(--nl-paper) 12%, transparent);
+}
+
+.footerInner {
+  max-width: var(--nl-max);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.footerLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.35rem;
+}
+
+.footerLinks a {
+  color: color-mix(in srgb, var(--nl-paper) 78%, transparent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footerLinks a:hover {
+  color: var(--nl-paper);
+}
+
+.footerNote {
+  font-size: 0.75rem;
+  color: color-mix(in srgb, var(--nl-paper) 48%, transparent);
+  max-width: 22rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ——— Page sections ——— */
+.pageHero {
+  padding: clamp(2rem, 5vw, 3rem) 0 0;
+}
+
+.pageHeroInner {
+  max-width: var(--nl-max);
+  margin: 0 auto;
+  padding: 0 var(--nl-gutter);
+}
+
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--nl-accent);
+  margin: 0 0 0.75rem;
+}
+
+.pageTitle {
+  font-family: var(--nl-font-display);
+  font-size: clamp(1.85rem, 4vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--nl-ink);
+  margin: 0;
+  max-width: 18ch;
+}
+
+.pageTitle em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--nl-accent);
+}
+
+.pageLead {
+  margin-top: 1rem;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--nl-ink-soft);
+  max-width: var(--nl-measure);
+}
+
+.section {
+  padding: clamp(2rem, 5vw, 2.75rem) 0;
+}
+
+.sectionMuted {
+  background: var(--nl-paper-2);
+  border-top: 1px solid var(--nl-rule);
+  border-bottom: 1px solid var(--nl-rule);
+}
+
+.sectionInner {
+  max-width: var(--nl-max);
+  margin: 0 auto;
+  padding: 0 var(--nl-gutter);
+}
+
+.sectionTitle {
+  font-family: var(--nl-font-display);
+  font-size: clamp(1.2rem, 2.5vw, 1.45rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem;
+}
+
+.body {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--nl-ink-soft);
+  margin: 0 0 1rem;
+  max-width: var(--nl-measure);
+}
+
+.body:last-child {
+  margin-bottom: 0;
+}
+
+.body a {
+  color: var(--nl-accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.list {
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--nl-ink-soft);
+  max-width: var(--nl-measure);
+}
+
+.list li {
+  margin-bottom: 0.5rem;
+}
+
+.list li:last-child {
+  margin-bottom: 0;
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.65rem 1.15rem;
+  border-radius: 2px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--nl-paper);
+  background: var(--nl-ink);
+  border: 1px solid var(--nl-ink);
+}
+
+.ctaPrimary:hover {
+  background: var(--nl-ink-soft);
+  border-color: var(--nl-ink-soft);
+}
+
+.ctaGhost {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.65rem 1.1rem;
+  border-radius: 2px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--nl-ink);
+  background: transparent;
+  border: 1px solid var(--nl-rule);
+}
+
+.ctaGhost:hover {
+  border-color: var(--nl-ink);
+}
+
+.faqList {
+  margin: 0;
+  padding: 0;
+}
+
+.faqItem {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--nl-rule);
+}
+
+.faqItem:first-of-type {
+  border-top: 1px solid var(--nl-rule);
+}
+
+.faqQ {
+  font-family: var(--nl-font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--nl-ink);
+  margin: 0 0 0.35rem;
+}
+
+.faqA {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--nl-muted);
+}

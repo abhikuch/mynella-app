@@ -1,29 +1,23 @@
 import type { Metadata } from "next";
-import { ContactPageView } from "@/components/sections/ContactLanding";
+import { MarketingContactView } from "@/components/sections/MarketingContactView";
 import { resolveContactPage } from "@/lib/contact-page-content";
 import { pageMetadataForRoute } from "@/lib/page-copy-merge";
 import { getContactPage } from "@/sanity/lib/contactPage";
 import { getPageCopy } from "@/sanity/lib/pageCopy";
-import { getResolvedSiteChrome } from "@/sanity/lib/siteChrome";
 
 export async function generateMetadata(): Promise<Metadata> {
   return pageMetadataForRoute(
     "contact",
     {
       title: "Contact MyNella",
-      description:
-        "Customer care, press, and partnerships for MyNella — the makeup and beauty editorial site.",
+      description: "Questions about Nella, press, partnerships, or support — reach the MyNella team.",
     },
     "/contact",
   );
 }
 
 export default async function ContactPage() {
-  const [copy, rawContact, chrome] = await Promise.all([
-    getPageCopy("contact"),
-    getContactPage(),
-    getResolvedSiteChrome(),
-  ]);
+  const [copy, rawContact] = await Promise.all([getPageCopy("contact"), getContactPage()]);
   const content = resolveContactPage(rawContact);
-  return <ContactPageView copy={copy} content={content} chrome={chrome} />;
+  return <MarketingContactView copy={copy} content={content} />;
 }

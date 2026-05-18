@@ -46,8 +46,16 @@ export function ogAssetPathForPathname(pathname: string): string {
   if (p === "/contact") return "/og/contact.png";
   if (p === "/terms") return "/og/terms.png";
   if (p === "/privacy") return "/og/privacy.png";
+  if (p === "/delete-account") return "/og/default.png";
   return "/og/default.png";
 }
 
 /** Marketing routes to include in sitemap (App Router paths, no trailing slash). */
-export const SITEMAP_PATHS: string[] = ["/", "/about", "/contact", "/terms", "/privacy"];
+export const SITEMAP_PATHS: string[] = [
+  "/",
+  "/about",
+  "/contact",
+  "/terms",
+  "/privacy",
+  "/delete-account",
+];

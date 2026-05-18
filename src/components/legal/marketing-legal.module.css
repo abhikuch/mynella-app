@@ -1,0 +1,28 @@
+.frame {
+  width: 100%;
+  min-height: min(72vh, 900px);
+  border: 1px solid var(--nl-rule);
+  border-radius: 2px;
+  background: var(--nl-paper-2);
+  overflow: hidden;
+}
+
+.frame iframe {
+  display: block;
+  width: 100%;
+  height: min(72vh, 900px);
+  border: none;
+}
+
+.note {
+  margin-top: 1rem;
+  font-size: 0.8125rem;
+  color: var(--nl-muted);
+  max-width: var(--nl-measure);
+  line-height: 1.55;
+}
+
+.note a {
+  color: var(--nl-accent);
+  font-weight: 600;
+}

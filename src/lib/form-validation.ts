@@ -87,3 +87,28 @@ export function validateContactFormData(fd: FormData): string | null {
     validateOptionalMessage(String(fd.get("message") ?? ""))
   );
 }
+
+/** Client + server: Nella app account deletion request (Google Play web resource). */
+export function validateDeleteAccountFormData(fd: FormData): string | null {
+  const emailErr = validateLeadEmail(String(fd.get("email") ?? ""));
+  if (emailErr) return emailErr;
+
+  const phoneRaw = String(fd.get("phone") ?? "").trim();
+  if (phoneRaw) {
+    const phoneErr = validateIndiaPhone(phoneRaw);
+    if (phoneErr) return phoneErr;
+  }
+
+  const accountNote = String(fd.get("accountNote") ?? "").trim();
+  if (accountNote.length > MAX_MESSAGE_LEN) {
+    return `Please keep your note under ${MAX_MESSAGE_LEN} characters.`;
+  }
+  if (accountNote.includes("\x00")) return "Note contains invalid characters.";
+
+  const confirm = fd.get("confirmDeletion") === "on";
+  if (!confirm) {
+    return "Please confirm you want to permanently delete your Nella app account.";
+  }
+
+  return null;
+}

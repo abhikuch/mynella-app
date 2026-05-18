@@ -18,6 +18,7 @@ export const siteChromeSeed = {
   footerCompliance: [
     { label: "Terms", href: "/terms" },
     { label: "Privacy", href: "/privacy" },
+    { label: "Delete account", href: "/delete-account" },
   ],
   footerCompany: [
     { label: "About", href: "/about" },

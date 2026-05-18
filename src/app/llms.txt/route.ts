@@ -11,6 +11,7 @@ const CONTENT = `# MyNella
 - Contact: ${SITE_URL}/contact
 - Terms: ${SITE_URL}/terms
 - Privacy: ${SITE_URL}/privacy
+- Delete Nella app account: ${SITE_URL}/delete-account
 
 ## Stack
 

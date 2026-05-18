@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-import { LegalDocumentPage } from "@/components/legal/LegalDocumentPage";
+import { MarketingLegalPage } from "@/components/legal/MarketingLegalPage";
 import { getPageCopy } from "@/sanity/lib/pageCopy";
 import { getSiteSettings } from "@/sanity/lib/site";
 import { pageMetadataForRoute } from "@/lib/page-copy-merge";
@@ -32,5 +32,5 @@ export default async function PrivacyPage() {
   const title = copy?.heroTitleLine1?.trim() || FALLBACK_TITLE;
   const description = copy?.heroSubtitle?.trim() || FALLBACK_DESCRIPTION;
 
-  return <LegalDocumentPage title={title} description={description} pdfPath={PDF} />;
+  return <MarketingLegalPage title={title} description={description} pdfPath={PDF} />;
 }

@@ -303,6 +303,7 @@ export function NellaLanding({
             <Link href="/privacy">Privacy</Link>
             <Link href="/terms">Terms</Link>
             <Link href="/contact">Contact</Link>
+            <Link href="/delete-account">Delete account</Link>
           </div>
           <p className={styles.footerNote}>
             Nella is developed separately from this marketing site (MyNella). Nothing here is

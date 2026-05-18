@@ -82,4 +82,11 @@ export const pageCopySeed: PageCopySeedRow[] = [
     metaTitle: "Privacy Policy | MyNella",
     metaDescription: "How MyNella collects, uses, and protects your information.",
   },
+  {
+    _id: "pageCopy-delete-account",
+    routeKey: "delete-account",
+    metaTitle: "Delete your Nella account | MyNella",
+    metaDescription:
+      "Request deletion of your Nella companion app account and associated personal data.",
+  },
 ];
